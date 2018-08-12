@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="SheepFinance.UserControlTransferCash"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheepFinance"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="300"  Foreground="White" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
+    <Grid>
+        <StackPanel>
+            <StackPanel Height="120" Background="#FF073E6A" VerticalAlignment="Top">
+                <TextBlock Text="Transferências" FontSize="24" FontWeight="Bold" Margin="20 20 0 0"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
+                    <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
+                    <ComboBox x:Name="ComboBoxOut" Width="200" Margin="15" materialDesign:HintAssist.Hint="De" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="400"
+                                Text="{Binding Path=Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox x:Name="ComboBoxIn" Width="200" Margin="15" materialDesign:HintAssist.Hint="Para" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="400"
+                                Text="{Binding Path=Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAdd_Click">
+                        <materialDesign:PackIcon Kind="Check"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Grid Height="420">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                    <Button x:Name="ButtonPreviousMonth" Margin="5" Click="ButtonPreviousMonth_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft"/>
+                    </Button>
+                    <Grid Width="90">
+                        <TextBlock x:Name="TextBlockYear" Text="2018" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" FontSize="15"/>
+                        <TextBlock x:Name="TextBlockMonth" Text="Dezembro" FontSize="18" VerticalAlignment="Bottom" TextAlignment="Center" Margin="5"/>
+                    </Grid>
+                    <Button x:Name="ButtonNextMonth" Margin="5" Click="ButtonNextMonth_Click">
+                        <materialDesign:PackIcon Kind="ArrowRight"/>
+                    </Button>
+                </StackPanel>
+                <ListView x:Name="ListViewTransactions" FontSize="18" Margin="0 50 0 0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="250"
+                                Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock xml:lang="pt-BR"
+                                Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock xml:lang="pt-BR" Width="150"
+                                Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
+                                <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">
+                                    <materialDesign:PackIcon Kind="Delete"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock x:Name="TextBlockTransfersEmpty" Text="Não tem nada aqui ainda!" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                                x:Name="SnackbarThree" Margin="15"/>
+    </Grid>
+</UserControl>

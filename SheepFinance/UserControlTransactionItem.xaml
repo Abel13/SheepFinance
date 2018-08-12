@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="SheepFinance.UserControlTransactionItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheepFinance"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="80" Foreground="White" Background="Black">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBlock Text="Alimenteção mensal" Width="300"/>
+        <TextBlock Text="R$ 140,00" TextAlignment="Right" Foreground="#FF2982DE" Margin="20"/>
+        <TextBlock Text="MÉDIO PRAZO" Width="100"/>
+        <Button Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ADD CRÉDITO" VerticalAlignment="Center" Margin="5"/>
+                <materialDesign:PackIcon Kind="CreditCardPlus" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="FINALIZAR META" VerticalAlignment="Center"/>
+                <materialDesign:PackIcon Kind="TrophyOutline" Margin="5" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>

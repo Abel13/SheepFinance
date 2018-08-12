@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="SheepFinance.UserControlBoxes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheepFinance"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="300" Foreground="White" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
+    <Grid>
+        <StackPanel>
+            <StackPanel Height="120" Background="#FF073E6A" VerticalAlignment="Top">
+                <TextBlock Text="Metas" FontSize="24" FontWeight="Bold" Margin="20 20 0 0"/>
+                <StackPanel Orientation="Horizontal" Margin="20 0">
+                    <TextBlock Text="Disponível: " FontSize="18" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TextBlockAmountAvailable" xml:lang="pt-BR" Text="{Binding Path=AmountAvailable, StringFormat={}{0:C}}"  FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="TextBoxName" Width="200" Margin="15" materialDesign:HintAssist.Hint="Nome" VerticalAlignment="Center"/>
+                    <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
+                    <DatePicker x:Name="DatePickerDeadline" Width="150" Margin="15" materialDesign:HintAssist.Hint="Prazo (opcional)" VerticalAlignment="Center"/>
+                    <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAdd_Click">
+                        <materialDesign:PackIcon Kind="Check"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Grid Height="420">
+                <ListView x:Name="ListViewGoals" FontSize="18">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=Name}" Width="200" Margin="10" VerticalAlignment="Center"/>
+                                    <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Balance, StringFormat={}{0:C}}" TextAlignment="Right" Margin="20 0" VerticalAlignment="Center"/>
+                                    <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=GoalValue, StringFormat={}{0:C}}" TextAlignment="Right" Margin="20 0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Button x:Name="ButtonAddCredit" Margin="10 0" Click="ButtonAddCredit_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="ADD CRÉDITO" VerticalAlignment="Center" Margin="5"/>
+                                        <materialDesign:PackIcon Kind="CreditCardPlus" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ButtonFinishGoal" Margin="10 0" Click="ButtonFinishGoal_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="FINALIZAR META" VerticalAlignment="Center"/>
+                                        <materialDesign:PackIcon Kind="TrophyOutline" Margin="5" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock x:Name="TextBlockGoalsEmpty" VerticalAlignment="Center" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                                x:Name="SnackbarThree" Margin="15"/>
+    </Grid>
+</UserControl>

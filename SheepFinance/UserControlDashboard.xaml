@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="SheepFinance.UserControlDashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheepFinance"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="600" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Foreground="LightGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
+            <StackPanel>
+                <StackPanel Background="#FF343434" Margin="15" Height="80">
+                    <StackPanel.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                    </StackPanel.Effect>
+                    <TextBlock Text="total" FontSize="18" Margin="10" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" Margin="10 0" FontSize="18" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Background="#FF343434" Margin="15">
+                    <StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="30" ShadowDepth="1"/>
+                    </StackPanel.Effect>
+                    <TextBlock Text="histórico" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
+                    <ListView x:Name="ListViewTimeLine" ItemsSource="{Binding ItemTimeLine}" Height="360">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="50" Text="{Binding Path=Date, StringFormat={}{0:dd-MMM}}" Margin="5" VerticalAlignment="Center" Foreground="Gray" FontSize="14" FontWeight="Bold"/>
+                                    <Grid Margin="10 0">
+                                        <Rectangle Fill="White" HorizontalAlignment="Center" Width="2" Margin="0 9.7 0 0"/>
+                                        <Grid VerticalAlignment="Top" >
+                                            <Ellipse Width="22" Height="22" Stroke="White"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="1"/>
+                                            <Ellipse Width="16" Height="16" Stroke="White"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="2"/>
+                                            <Ellipse Width="6" Height="6" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid MinWidth="180">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Path=Type}" Margin="5 10 10 0" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="18" TextAlignment="Left"/>
+                                            <TextBlock Text="{Binding Path=Description}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="14" TextAlignment="Left" Foreground="LightGray"/>
+                                            <TextBlock Text="{Binding Path=Value}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="15" TextAlignment="Left" Foreground="{Binding Path=Brush}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Column="1" Grid.RowSpan="3" MinWidth="150">
+            <StackPanel Margin="30 15">
+                <StackPanel Background="#FF343434">
+                    <StackPanel.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                    </StackPanel.Effect>
+                    <TextBlock Text="GRÁFICO MENSAL" Margin="20 10" FontSize="18"/>
+                    <TextBlock x:Name="TextBlockMonthlyChartsEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" x:Name="StackMain" VerticalAlignment="Top"/>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Background="#FF343434" Margin="0 30">
+                    <StackPanel.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                    </StackPanel.Effect>
+                    <StackPanel Height="200">
+                        <TextBlock Text="COTAÇÃO DO DOLAR" Margin="20 10" FontSize="18"/>
+                        <StackPanel>
+                            <ItemsControl x:Name="ListViewDollares" ItemsSource="{Binding ItemDollar}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Path=Day}" TextAlignment="Right" Margin="20 10" FontSize="15"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=Value}" Margin="20 10" FontSize="15"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel></WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+            <StackPanel Margin="15" Background="#FF343434">
+                <StackPanel.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                </StackPanel.Effect>
+                <TextBlock Text="contas" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
+                <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" Height="520">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <GroupBox Header="{Binding Path=Name}" Width="185">
+                                <Grid >
+                                    <TextBlock xml:lang="pt-BR" Text="{Binding Path=Amount, StringFormat={}{0:C}}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </GroupBox>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="SheepFinance.UserControlItemChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheepFinance"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Foreground="White" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="11">
+    <Grid Height="300">
+        <Rectangle Stroke="LightGray"/>
+        <StackPanel HorizontalAlignment="Center" Margin="20">
+            <TextBlock Text="{Binding Month}"/>
+            <TextBlock Text="{Binding Year}" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" MaxHeight="250" HorizontalAlignment="Center">
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock xml:lang="pt-BR" Text="{Binding Incomings, StringFormat={}{0:C}}" HorizontalAlignment="Center"/>
+                <Grid x:Name="GridIncoming" Height="200" Width="60" Margin="10 0 5 10">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF67E267" Offset="0"/>
+                            <GradientStop Color="#FF1ED41E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                </Grid>
+                <TextBlock Text="ENTRADAS" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock xml:lang="pt-BR" Text="{Binding Expenses, StringFormat={}{0:C}}" HorizontalAlignment="Center"/>
+                <Grid x:Name="GridExpense" Height="50" Width="60" Margin="5 0 10 10">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFEA4949" Offset="0"/>
+                            <GradientStop Color="#FFDC1B1B" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                </Grid>
+                <TextBlock Text="SAÍDAS" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
