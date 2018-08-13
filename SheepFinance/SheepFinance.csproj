@@ -116,6 +116,7 @@
     <Compile Include="Model\BacenDollar.cs" />
     <Compile Include="Model\Box.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\CategoryGroup.cs" />
     <Compile Include="Model\Dollar.cs" />
     <Compile Include="Model\Goal.cs" />
     <Compile Include="Model\ItemChart.cs" />
