@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace SheepFinance.Model
 {
-    public class CategoryGroup
+    public class ItemCategory
     {
-        public string Name;
-
-        public CategoryGroup(string name)
-        {
-            Name = name;
-        }
+        public string Name { get; set; }
+        public string Group { get; set; }
 
         public override string ToString()
         {

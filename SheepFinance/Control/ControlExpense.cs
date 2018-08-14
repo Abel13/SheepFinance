@@ -32,13 +32,13 @@ namespace SheepFinance.Control
 
         public ObservableCollection<Account> GetAccountList() => database.GetAccounts();
 
-        internal void SaveExpense(double value, DateTime date, object account)
+        internal void SaveExpense(double value, DateTime date, object account, object category)
         {
             var acc = (from a in GetAccountList()
                        where a.Name.Equals(((Account)account).Name)
                        select a).FirstOrDefault();
 
-            database.AddExpense(value, date, acc);
+            database.AddExpense(value, date, acc, (ItemCategory)category);
         }
 
         internal List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).ToList();

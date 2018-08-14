@@ -119,6 +119,7 @@
     <Compile Include="Model\CategoryGroup.cs" />
     <Compile Include="Model\Dollar.cs" />
     <Compile Include="Model\Goal.cs" />
+    <Compile Include="Model\ItemCategory.cs" />
     <Compile Include="Model\ItemChart.cs" />
     <Compile Include="Model\ItemDollar.cs" />
     <Compile Include="Model\ItemTimeLine.cs" />

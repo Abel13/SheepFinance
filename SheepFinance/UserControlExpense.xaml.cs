@@ -78,6 +78,13 @@ namespace SheepFinance
                 return;
             }
 
+            if (ComboBoxCategory.Text == string.Empty)
+            {
+                ComboBoxCategory.Focus();
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a categoria"));
+                return;
+            }
+
             if (ComboBoxAccounts.Text == string.Empty)
             {
                 ComboBoxAccounts.Focus();
@@ -89,11 +96,12 @@ namespace SheepFinance
             DateTime date = DatePickerData.SelectedDate ?? DateTime.Now;
             var account = ComboBoxAccounts.SelectedItem;
             var goal = ComboBoxGoals.SelectedItem;
+            var category = ComboBoxCategory.SelectedItem;
             
             if(goal != null)
                 control.DebitGoal(goal, value);
 
-            control.SaveExpense(value, date, account);
+            control.SaveExpense(value, date, account, category);
             LoadExpenses();
 
             TextBoxValue.Text = string.Empty;

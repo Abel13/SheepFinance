@@ -45,7 +45,6 @@ namespace SheepFinance.Data
             return instance;
         }
 
-
         #region FILES
         private static readonly string incommingsFile = "incomings.json";
         private static readonly string accountsFile = "accounts.json";
@@ -54,6 +53,7 @@ namespace SheepFinance.Data
         private static readonly string dollaresFile = "dollares.json";
         private static readonly string goalsFile = "goals.json";
         private static readonly string categoryGroupsFile = "categoryGroups.json";
+
         private static readonly string categoriesFile = "categories.json";
         #endregion
 
@@ -126,17 +126,17 @@ namespace SheepFinance.Data
         /// <param name="value"></param>
         /// <param name="date"></param>
         /// <param name="account"></param>
-        internal void AddExpense(double value, DateTime date, Account account)
+        internal void AddExpense(double value, DateTime date, Account account, ItemCategory category)
         {
-            var expense = new Expense(date, account, value);
+            var expense = new Expense(date, account, value, category);
             Expenses.Add(expense);
             expense.Move(value);
             SaveAccounts();
             SaveExpenses();
         }
-        internal void AddIncoming(double value, DateTime date, Account account)
+        internal void AddIncoming(double value, DateTime date, Account account, ItemCategory category)
         {
-            var incoming = new Incoming(date, account, value);
+            var incoming = new Incoming(date, account, value, category);
             Incomings.Add(incoming);
             incoming.Move(value);
             SaveAccounts();
@@ -473,6 +473,7 @@ namespace SheepFinance.Data
         internal ObservableCollection<Account> GetAccounts() => Accounts;
         internal ObservableCollection<TransferCash> GetTransfers() => Transfers;
         internal ObservableCollection<Goal> GetGoals() => Goals;
+        internal ObservableCollection<Category> GetCategories() => Categories;
         #endregion
     }
 }

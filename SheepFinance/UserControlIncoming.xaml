@@ -14,6 +14,22 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
                     <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
+                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                        <ComboBox.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Margin="5 0"/>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ComboBox.GroupStyle>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -46,10 +62,9 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="250"
-                                Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center"/>
-                                <TextBlock xml:lang="pt-BR"
-                                Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Width="250" Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Width="150" Text="{Binding Path=Category}" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock xml:lang="pt-BR" Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
                                 <TextBlock xml:lang="pt-BR" Width="150"
                                 Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
                                 <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">

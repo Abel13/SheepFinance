@@ -11,7 +11,8 @@ namespace SheepFinance.Model
         public string Description { get; protected set; }
         public double Value { get; protected set; }
         public DateTime Date { get; protected set; }
-
+        public ItemCategory Category { get; protected set; }
+        
         public abstract void Move(Double value);
     }
 }
