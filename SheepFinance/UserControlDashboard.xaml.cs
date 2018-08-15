@@ -61,7 +61,7 @@ namespace SheepFinance
                 var max = mI > mE ? mI : mE;
                 foreach (var item in monthlyStatistics)
                 {
-                    StackMain.Children.Add(new UserControlItemChart(item, max));
+                    StackMonthlyChart.Children.Add(new UserControlItemChart(item, max));
                 }
                 
             }

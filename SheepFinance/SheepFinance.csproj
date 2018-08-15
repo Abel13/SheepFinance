@@ -80,6 +80,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Panteam.MetroChart, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Panteam.MetroChart.1.0.1\lib\net40\Panteam.MetroChart.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -131,6 +134,9 @@
     <Compile Include="UserControlBoxes.xaml.cs">
       <DependentUpon>UserControlBoxes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCostByCategory.xaml.cs">
+      <DependentUpon>UserControlCostByCategory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
     </Compile>
@@ -172,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCostByCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
