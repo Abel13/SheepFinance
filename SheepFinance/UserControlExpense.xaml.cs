@@ -43,6 +43,9 @@ namespace SheepFinance
             if (goals.Count > 0)
                 ComboBoxGoals.ItemsSource = goals;
 
+            ComboBoxCategory.ItemsSource = control.GetCategoryList();
+            ComboBoxCategory.SelectedIndex = -1;
+
             LoadExpenses();
         }
 

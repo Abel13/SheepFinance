@@ -1,11 +1,13 @@
 ﻿using SheepFinance.Data;
 using SheepFinance.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace SheepFinance.Control
 {
@@ -44,6 +46,22 @@ namespace SheepFinance.Control
         internal List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).ToList();
 
         internal void NextMonth() => ActualDate = ActualDate.AddMonths(1);
+
+        public ListCollectionView GetCategoryList()
+        {
+            var categories = database.GetCategories().ToList();
+            List<ItemCategory> items = new List<ItemCategory>();
+
+            foreach (var item in categories)
+            {
+                items.Add(new ItemCategory { Group = item.Group.Name, Name = item.Name });
+            }
+
+            ListCollectionView lcv = new ListCollectionView(items);
+            lcv.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
+
+            return lcv;
+        }
 
         internal void PreviousMonth() => ActualDate = ActualDate.AddMonths(-1);
 
