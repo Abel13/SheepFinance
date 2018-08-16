@@ -29,7 +29,7 @@
     <TargetCulture>pt-BR</TargetCulture>
     <ProductName>Sheep Finance</ProductName>
     <PublisherName>InfoSheep</PublisherName>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>4.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
