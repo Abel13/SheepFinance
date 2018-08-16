@@ -85,7 +85,8 @@ namespace SheepFinance
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            if(e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }
