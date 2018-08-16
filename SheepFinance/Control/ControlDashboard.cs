@@ -81,15 +81,15 @@ namespace SheepFinance.Control
         {
             List<ItemChartCategory> itemCharts = new List<ItemChartCategory>();
 
-            var groupedIncomings = (from i in Incomings
-                                    group i by new { month = i.Date.Month, year = i.Date.Year } into d
+            var groupedExpenses = (from e in Expenses
+                                    group e by new { month = e.Date.Month, year = e.Date.Year } into d
                                     select new
                                     {
                                         dt = string.Format("{0}/{1}", d.Key.month, d.Key.year),
                                         count = d.Count()
                                     }).OrderByDescending(g => g.dt);
             
-            foreach (var item in groupedIncomings)
+            foreach (var item in groupedExpenses)
             {
                 var ic = itemCharts.Where(i => i.Date.Equals(DateTime.Parse("01/" + item.dt))).FirstOrDefault();
                 if (ic == null)
