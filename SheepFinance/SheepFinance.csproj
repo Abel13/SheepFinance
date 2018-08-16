@@ -29,7 +29,7 @@
     <TargetCulture>pt-BR</TargetCulture>
     <ProductName>Sheep Finance</ProductName>
     <PublisherName>InfoSheep</PublisherName>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>4.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -70,6 +70,12 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -115,9 +121,13 @@
     <Compile Include="Exceptions\DataHasChildrenException.cs" />
     <Compile Include="Model\BacenDollar.cs" />
     <Compile Include="Model\Box.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\CategoryGroup.cs" />
     <Compile Include="Model\Dollar.cs" />
     <Compile Include="Model\Goal.cs" />
-    <Compile Include="Model\ItemChart.cs" />
+    <Compile Include="Model\ItemCategory.cs" />
+    <Compile Include="Model\ItemChartCategory.cs" />
+    <Compile Include="Model\ItemChartMonthly.cs" />
     <Compile Include="Model\ItemDollar.cs" />
     <Compile Include="Model\ItemTimeLine.cs" />
     <Compile Include="Model\MenuItem.cs" />
@@ -127,6 +137,9 @@
     </Compile>
     <Compile Include="UserControlBoxes.xaml.cs">
       <DependentUpon>UserControlBoxes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlItemCostByCategory.xaml.cs">
+      <DependentUpon>UserControlItemCostByCategory.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
@@ -169,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItemCostByCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

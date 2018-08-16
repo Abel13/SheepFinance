@@ -9,12 +9,14 @@ namespace SheepFinance.Model
     public class Incoming : Transaction
     {
         public Account Account { get; private set; }
-        public Incoming(DateTime date, Account account, double value)
+
+        public Incoming(DateTime date, Account account, double value, ItemCategory category)
         {
             Description = account.Name;
             Date = date;
             Account = account;
             Value = value;
+            Category = category;
         }
 
         public override void Move(double value)

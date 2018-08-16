@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace SheepFinance.Control
 {
@@ -35,13 +36,13 @@ namespace SheepFinance.Control
             return database.GetAccounts();
         }
 
-        internal void SaveIncoming(double value, DateTime date, object account)
+        internal void SaveIncoming(double value, DateTime date, object account, object category)
         {
             var acc = (from a in GetAccountList()
                       where a.Name.Equals(((Account)account).Name)
                       select a).FirstOrDefault();
 
-            database.AddIncoming(value, date, acc);
+            database.AddIncoming(value, date, acc, (ItemCategory)category);
         }
 
         internal void NextMonth()
@@ -62,6 +63,22 @@ namespace SheepFinance.Control
                           select a).FirstOrDefault();
             account.Debit(i.Value);
             database.DeleteIncoming(i);
+        }
+
+        public ListCollectionView GetCategoryList()
+        {
+            var categories = database.GetCategories().ToList();
+            List<ItemCategory> items = new List<ItemCategory>();
+
+            foreach (var item in categories)
+            {
+                items.Add(new ItemCategory{ Group = item.Group.Name, Name = item.Name });
+            }
+
+            ListCollectionView lcv = new ListCollectionView(items);
+            lcv.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
+
+            return lcv;
         }
     }
 }
