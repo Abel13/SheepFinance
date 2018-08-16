@@ -21,7 +21,7 @@ namespace SheepFinance
     /// </summary>
     public partial class UserControlItemChart : UserControl
     {
-        public UserControlItemChart(ItemChart item, double maximum)
+        public UserControlItemChart(ItemChartMonthly item, double maximum)
         {
             InitializeComponent();
 

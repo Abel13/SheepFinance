@@ -93,6 +93,7 @@ namespace SheepFinance
             TextBoxValue.Text = string.Empty;
             ComboBoxAccounts.SelectedIndex = -1;
             DatePickerData.Text = string.Empty;
+            ComboBoxCategory.SelectedIndex = -1;
         }
 
         private void LoadIncomings()

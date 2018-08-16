@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SheepFinance.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,14 @@ namespace SheepFinance
     /// <summary>
     /// Interaction logic for UserControlCostByCategory.xaml
     /// </summary>
-    public partial class UserControlCostByCategory : UserControl
+    public partial class UserControlItemCostByCategory : UserControl
     {
-        public UserControlCostByCategory()
+        public UserControlItemCostByCategory(ItemChartCategory categories)
         {
             InitializeComponent();
+
+            DataContext = categories;
+            //PieChartCategories.DataContext = categories.SeriesCollection;
         }
     }
 }

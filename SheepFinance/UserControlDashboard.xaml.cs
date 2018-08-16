@@ -34,7 +34,22 @@ namespace SheepFinance
             LoadAccounts();
             LoadTransactions();
             LoadMonthlyStatistics();
+            LoadCategoryCosts();
             LoadDollar();
+        }
+
+        private void LoadCategoryCosts()
+        {
+            var categories = control.GetItensChartCategories();
+            if (categories.Count > 0)
+            {
+                foreach (var item in categories)
+                {
+                    StackCategoryCost.Children.Add(new UserControlItemCostByCategory(item));
+                }
+            }
+
+            TextBlockCategoryCostEmpty.Visibility = categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void LoadTransactions()
@@ -53,7 +68,7 @@ namespace SheepFinance
 
         private void LoadMonthlyStatistics()
         {
-            var monthlyStatistics = control.GetItemCharts();
+            var monthlyStatistics = control.GetItensChartMonthly();
             if (monthlyStatistics.Count > 0)
             {
                 var mI = monthlyStatistics.Max(i => i.Incomings);

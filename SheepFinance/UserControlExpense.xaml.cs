@@ -111,6 +111,7 @@ namespace SheepFinance
             ComboBoxAccounts.SelectedIndex = -1;
             DatePickerData.Text = string.Empty;
             ComboBoxGoals.SelectedIndex = -1;
+            ComboBoxCategory.SelectedIndex = -1;
         }
 
         private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)

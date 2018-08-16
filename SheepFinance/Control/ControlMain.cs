@@ -25,8 +25,8 @@ namespace SheepFinance.Control
             {
                 new MenuItem("DASHBOARD", MaterialDesignThemes.Wpf.PackIconKind.ViewDashboard),
                 new MenuItem("CONTAS", MaterialDesignThemes.Wpf.PackIconKind.AccountCardDetails),
-                new MenuItem("RECEITAS", MaterialDesignThemes.Wpf.PackIconKind.PlusCircleOutline),
-                new MenuItem("DESPESAS", MaterialDesignThemes.Wpf.PackIconKind.MinusCircleOutline),
+                new MenuItem("ENTRADAS", MaterialDesignThemes.Wpf.PackIconKind.PlusCircleOutline),
+                new MenuItem("SAÍDAS", MaterialDesignThemes.Wpf.PackIconKind.MinusCircleOutline),
                 new MenuItem("TRANSFERÊNCIAS", MaterialDesignThemes.Wpf.PackIconKind.SwapHorizontal),
                 new MenuItem("CAIXINHAS", MaterialDesignThemes.Wpf.PackIconKind.Dropbox)
             };
