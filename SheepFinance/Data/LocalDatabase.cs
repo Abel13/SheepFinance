@@ -17,24 +17,8 @@ namespace SheepFinance.Data
     public class LocalDatabase
     {
         private static LocalDatabase instance;
-
         private LocalDatabase()
         { }
-
-        private static readonly string incommingsFile = "incomings.json";
-        private static readonly string accountsFile = "accounts.json";
-        private static readonly string expensesFile = "expenses.json";
-        private static readonly string transfersFile = "transfers.json";
-        private static readonly string dollaresFile = "dollares.json";
-        private static readonly string goalsFile = "goals.json";
-
-        private static ObservableCollection<Incoming> Incomings { get; set; }
-        private static ObservableCollection<Expense> Expenses { get; set; }
-        private static ObservableCollection<Account> Accounts { get; set; }
-        private static ObservableCollection<TransferCash> Transfers { get; set; }
-        private static ObservableCollection<Dollar> Dollares { get; set; }
-        private static ObservableCollection<Goal> Goals { get; set; }
-
         public static LocalDatabase GetInstance()
         {
             if (instance == null)
@@ -46,6 +30,8 @@ namespace SheepFinance.Data
                 Transfers = new ObservableCollection<TransferCash>();
                 Dollares = new ObservableCollection<Dollar>();
                 Goals = new ObservableCollection<Goal>();
+                CategoryGroups = new ObservableCollection<CategoryGroup>();
+                Categories = new ObservableCollection<Category>();
 
                 LoadAccounts();
                 LoadDollares();
@@ -53,10 +39,36 @@ namespace SheepFinance.Data
                 LoadGoals();
                 LoadIncomings();
                 LoadTransfers();
+
+                LoadCategories();
             }
             return instance;
         }
 
+        #region FILES
+        private static readonly string incommingsFile = "incomings.json";
+        private static readonly string accountsFile = "accounts.json";
+        private static readonly string expensesFile = "expenses.json";
+        private static readonly string transfersFile = "transfers.json";
+        private static readonly string dollaresFile = "dollares.json";
+        private static readonly string goalsFile = "goals.json";
+        private static readonly string categoryGroupsFile = "categoryGroups.json";
+
+        private static readonly string categoriesFile = "categories.json";
+        #endregion
+
+        #region LISTS
+        private static ObservableCollection<Incoming> Incomings { get; set; }
+        private static ObservableCollection<Expense> Expenses { get; set; }
+        private static ObservableCollection<Account> Accounts { get; set; }
+        private static ObservableCollection<TransferCash> Transfers { get; set; }
+        private static ObservableCollection<Dollar> Dollares { get; set; }
+        private static ObservableCollection<Goal> Goals { get; set; }
+        private static ObservableCollection<Category> Categories { get; set; }
+        private static ObservableCollection<CategoryGroup> CategoryGroups { get; set; }
+        #endregion
+        
+        #region DELETE
         internal void DeleteExpense(Expense expense)
         {
             Expenses.Remove(expense);
@@ -95,7 +107,9 @@ namespace SheepFinance.Data
             else
                 throw new DataHasChildrenException();
         }
+        #endregion
 
+        #region ADD
         /// <summary>
         /// Add an accounto to Accounts List
         /// </summary>
@@ -112,17 +126,17 @@ namespace SheepFinance.Data
         /// <param name="value"></param>
         /// <param name="date"></param>
         /// <param name="account"></param>
-        internal void AddExpense(double value, DateTime date, Account account)
+        internal void AddExpense(double value, DateTime date, Account account, ItemCategory category)
         {
-            var expense = new Expense(date, account, value);
+            var expense = new Expense(date, account, value, category);
             Expenses.Add(expense);
             expense.Move(value);
             SaveAccounts();
             SaveExpenses();
         }
-        internal void AddIncoming(double value, DateTime date, Account account)
+        internal void AddIncoming(double value, DateTime date, Account account, ItemCategory category)
         {
-            var incoming = new Incoming(date, account, value);
+            var incoming = new Incoming(date, account, value, category);
             Incomings.Add(incoming);
             incoming.Move(value);
             SaveAccounts();
@@ -148,12 +162,16 @@ namespace SheepFinance.Data
             Goals.Add(goal);
             SaveGoals();
         }
+        #endregion
 
+        #region UPDATE
         public void UpdateGoal()
         {
             SaveGoals();
         }
+        #endregion
 
+        #region LOAD
         private static void LoadIncomings()
         {
             FileInfo f = new FileInfo(incommingsFile);
@@ -185,6 +203,17 @@ namespace SheepFinance.Data
                 Accounts = AccountsBD;
 
                 sr.Dispose();
+                sr.Close();
+            }
+            else
+            {
+                Accounts.Add(new Account("Carteira", 0.00));
+                var df = JsonConvert.SerializeObject(Accounts);
+
+                StreamWriter sr = new StreamWriter(accountsFile);
+
+                sr.Write(df);
+                sr.Flush();
                 sr.Close();
             }
         }
@@ -256,7 +285,125 @@ namespace SheepFinance.Data
                 sr.Close();
             }
         }
+        private static void LoadCategories()
+        {
+            LoadCategoryGroups();
 
+            FileInfo f = new FileInfo(categoriesFile);
+            if (f.Exists)
+            {
+                StreamReader sr = new StreamReader(categoriesFile);
+
+                var categoriesJson = sr.ReadToEnd();
+
+                var CategoriesBD = JsonConvert.DeserializeObject<ObservableCollection<Category>>(categoriesJson);
+
+                Categories = CategoriesBD;
+
+                sr.Dispose();
+                sr.Close();
+            }
+            else
+            {
+                var group = (from cg in CategoryGroups
+                             where cg.Name.Equals("Renda")
+                             select cg).FirstOrDefault();
+                Categories.Add(new Category("Remuneração", group));
+                Categories.Add(new Category("Bônus", group));
+                Categories.Add(new Category("Rendimento", group));
+                Categories.Add(new Category("Outras Rendas", group));
+                Categories.Add(new Category("Empréstimo", group));
+
+                group = (from cg in CategoryGroups
+                         where cg.Name.Equals("Gastos Essenciais")
+                         select cg).FirstOrDefault();
+                Categories.Add(new Category("Moradia", group));
+                Categories.Add(new Category("Contas Residenciais", group));
+                Categories.Add(new Category("Saúde", group));
+                Categories.Add(new Category("Educação", group));
+                Categories.Add(new Category("Transporte", group));
+                Categories.Add(new Category("Mercado", group));
+
+                group = (from cg in CategoryGroups
+                         where cg.Name.Equals("Estilo de Vida")
+                         select cg).FirstOrDefault();
+                Categories.Add(new Category("Empregados Domésticos", group));
+                Categories.Add(new Category("TV/Internet/Telefone", group));
+                Categories.Add(new Category("Taxas Bancárias", group));
+                Categories.Add(new Category("Saques", group));
+                Categories.Add(new Category("Bares/Restaurantes", group));
+                Categories.Add(new Category("Lazer", group));
+                Categories.Add(new Category("Compras", group));
+                Categories.Add(new Category("Cuidados Pessoais", group));
+                Categories.Add(new Category("Serviços", group));
+                Categories.Add(new Category("Viagem", group));
+                Categories.Add(new Category("Presentes/Doações", group));
+                Categories.Add(new Category("Família/Filhos", group));
+                Categories.Add(new Category("Despesas do Trabalho", group));
+                Categories.Add(new Category("Outros Gastos", group));
+                Categories.Add(new Category("Impostos", group));
+
+                group = (from cg in CategoryGroups
+                         where cg.Name.Equals("Empréstimos")
+                         select cg).FirstOrDefault();
+                Categories.Add(new Category("Juros de Cartão", group));
+                Categories.Add(new Category("Crédito", group));
+                Categories.Add(new Category("Cheque Especial", group));
+                Categories.Add(new Category("Crédito Consignado", group));
+                Categories.Add(new Category("Carnê", group));
+                Categories.Add(new Category("Outros Empréstimos", group));
+                Categories.Add(new Category("Juros", group));
+
+                group = (from cg in CategoryGroups
+                         where cg.Name.Equals("Não Classificado")
+                         select cg).FirstOrDefault();
+                Categories.Add(new Category("Categorizar", group));
+
+                var df = JsonConvert.SerializeObject(Categories);
+
+                StreamWriter sr = new StreamWriter(categoriesFile);
+
+                sr.Write(df);
+                sr.Flush();
+                sr.Close();
+            }
+        }
+        private static void LoadCategoryGroups()
+        {
+            FileInfo f = new FileInfo(categoryGroupsFile);
+            if (f.Exists)
+            {
+                StreamReader sr = new StreamReader(categoryGroupsFile);
+
+                var categoryGroupsJson = sr.ReadToEnd();
+
+                var CategoryGroupsBD = JsonConvert.DeserializeObject<ObservableCollection<CategoryGroup>>(categoryGroupsJson);
+
+                CategoryGroups = CategoryGroupsBD;
+
+                sr.Dispose();
+                sr.Close();
+            }
+            else
+            {
+                CategoryGroups.Add(new CategoryGroup("Renda"));
+                CategoryGroups.Add(new CategoryGroup("Gastos Essenciais"));
+                CategoryGroups.Add(new CategoryGroup("Estilo de Vida"));
+                CategoryGroups.Add(new CategoryGroup("Empréstimos"));
+                CategoryGroups.Add(new CategoryGroup("Não Classificado"));
+
+                var df = JsonConvert.SerializeObject(CategoryGroups);
+
+                StreamWriter sr = new StreamWriter(categoryGroupsFile);
+
+                sr.Write(df);
+                sr.Flush();
+                sr.Close();
+            }
+        }
+        #endregion
+
+        #region SAVE
         private void SaveIncomings()
         {
             var df = JsonConvert.SerializeObject(Incomings);
@@ -317,12 +464,16 @@ namespace SheepFinance.Data
             sr.Flush();
             sr.Close();
         }
+        #endregion
 
+        #region GET
         internal ObservableCollection<Dollar> GetDollares() => Dollares;
         internal ObservableCollection<Expense> GetExpenses() => Expenses;
         internal ObservableCollection<Incoming> GetIncomings() => Incomings;
         internal ObservableCollection<Account> GetAccounts() => Accounts;
         internal ObservableCollection<TransferCash> GetTransfers() => Transfers;
         internal ObservableCollection<Goal> GetGoals() => Goals;
+        internal ObservableCollection<Category> GetCategories() => Categories;
+        #endregion
     }
 }

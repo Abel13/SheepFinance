@@ -62,17 +62,27 @@
 
         <ScrollViewer Grid.Column="1" Grid.RowSpan="3" MinWidth="150">
             <StackPanel Margin="30 15">
-                <StackPanel Background="#FF343434">
+                <StackPanel Background="#FF343434" Margin="0 0 0 15">
+                    <StackPanel.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                    </StackPanel.Effect>
+                    <TextBlock Text="CENTROS DE CUSTO" Margin="20 10" FontSize="18"/>
+                    <TextBlock x:Name="TextBlockCategoryCostEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" x:Name="StackCategoryCost" VerticalAlignment="Top"/>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Background="#FF343434" Margin="0 0 0 15">
                     <StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
                     </StackPanel.Effect>
                     <TextBlock Text="GRÁFICO MENSAL" Margin="20 10" FontSize="18"/>
                     <TextBlock x:Name="TextBlockMonthlyChartsEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-                        <StackPanel Orientation="Horizontal" x:Name="StackMain" VerticalAlignment="Top"/>
+                        <StackPanel Orientation="Horizontal" x:Name="StackMonthlyChart" VerticalAlignment="Top"/>
                     </ScrollViewer>
                 </StackPanel>
-                <StackPanel Background="#FF343434" Margin="0 30">
+                <StackPanel Background="#FF343434" Margin="0 15">
                     <StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
                     </StackPanel.Effect>

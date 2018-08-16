@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SheepFinance.Model
 {
-    public class ItemChart
+    public class ItemChartMonthly
     {
         public DateTime Date { get; private set; }
         public string Month { get; private set; }
@@ -15,7 +15,7 @@ namespace SheepFinance.Model
         public double Expenses { get; private set; }
         public double Incomings { get; private set; }
 
-        public ItemChart(string date)
+        public ItemChartMonthly(string date)
         {
             Date = DateTime.Parse("1/" + date);
             Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Date.Month);

@@ -17,18 +17,16 @@ using System.Windows.Shapes;
 namespace SheepFinance
 {
     /// <summary>
-    /// Interação lógica para UserControlItemChart.xam
+    /// Interaction logic for UserControlCostByCategory.xaml
     /// </summary>
-    public partial class UserControlItemChart : UserControl
+    public partial class UserControlItemCostByCategory : UserControl
     {
-        public UserControlItemChart(ItemChartMonthly item, double maximum)
+        public UserControlItemCostByCategory(ItemChartCategory categories)
         {
             InitializeComponent();
 
-            DataContext = item;
-
-            GridIncoming.Height = (item.Incomings * 200) / maximum;
-            GridExpense.Height = (item.Expenses * 200) / maximum;
+            DataContext = categories;
+            //PieChartCategories.DataContext = categories.SeriesCollection;
         }
     }
 }
