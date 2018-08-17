@@ -1,7 +1,7 @@
 # SheepFinance
 Programa de gestão financeira pessoal
 
-**CLONE**
+**CLONE OR DOWNLOAD**
 * Abra o projeto pelo arquivo _SheepFinance.sln_
 * Clique com o botão direito na solução
 * Escolha a opção: Gerenciar pacotes do NuGet para a solução
