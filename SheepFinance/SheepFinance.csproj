@@ -165,6 +165,9 @@
     <Compile Include="WindowEditAccount.xaml.cs">
       <DependentUpon>WindowEditAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowEditTransaction.xaml.cs">
+      <DependentUpon>WindowEditTransaction.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -218,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowEditAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowEditTransaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

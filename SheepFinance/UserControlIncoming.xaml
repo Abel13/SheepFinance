@@ -65,8 +65,10 @@
                                 <TextBlock Width="250" Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center"/>
                                 <TextBlock Width="150" Text="{Binding Path=Category}" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
                                 <TextBlock xml:lang="pt-BR" Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
-                                <TextBlock xml:lang="pt-BR" Width="150"
-                                Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
+                                <Button x:Name="ButtonEdit" Margin="25 0" Width="60">
+                                    <materialDesign:PackIcon Kind="Pencil"/>
+                                </Button>
                                 <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">
                                     <materialDesign:PackIcon Kind="Delete"/>
                                 </Button>
