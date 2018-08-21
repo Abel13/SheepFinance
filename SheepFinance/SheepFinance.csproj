@@ -110,6 +110,7 @@
     <Compile Include="Control\ControlAccount.cs" />
     <Compile Include="Control\ControlAddCredit.cs" />
     <Compile Include="Control\ControlDashboard.cs" />
+    <Compile Include="Control\ControlEditTransaction.cs" />
     <Compile Include="Control\ControlExpense.cs" />
     <Compile Include="Control\ControlGoal.cs" />
     <Compile Include="Control\ControlIncoming.cs" />

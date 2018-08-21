@@ -19,9 +19,19 @@ namespace SheepFinance
     /// </summary>
     public partial class WindowEditTransaction : Window
     {
-        public WindowEditTransaction()
+        public WindowEditTransaction(object transaction, string kind)
         {
             InitializeComponent();
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
