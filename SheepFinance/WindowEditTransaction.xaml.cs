@@ -19,7 +19,7 @@ namespace SheepFinance
     /// </summary>
     public partial class WindowEditTransaction : Window
     {
-        public WindowEditTransaction(object transaction, string kind)
+        public WindowEditTransaction(object transaction)
         {
             InitializeComponent();
         }

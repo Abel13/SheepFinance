@@ -14,7 +14,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
                     <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
-                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center">
                         <ComboBox.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
@@ -30,7 +30,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                    <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -66,7 +66,7 @@
                                 <TextBlock Width="150" Text="{Binding Path=Category}" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
                                 <TextBlock xml:lang="pt-BR" Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
                                 <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
-                                <Button x:Name="ButtonEdit" Margin="25 0" Width="60">
+                                <Button x:Name="ButtonEdit" Margin="25 0" Width="60" Click="ButtonEdit_Click">
                                     <materialDesign:PackIcon Kind="Pencil"/>
                                 </Button>
                                 <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">

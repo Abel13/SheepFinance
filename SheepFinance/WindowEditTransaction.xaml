@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF073E6A" Width="300" Height="300" FontFamily="EngraversGothic BT" Foreground="White">
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF073E6A" Width="300" Height="300" FontFamily="EngraversGothic BT" Foreground="White">
     <StackPanel>
         <Grid Background="White" VerticalAlignment="Top" Width="300">
             <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="ButtonAdd_Click">

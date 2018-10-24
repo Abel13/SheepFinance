@@ -15,7 +15,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
                     <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
-                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center">
                         <ComboBox.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
@@ -31,7 +31,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center" ItemsSource="{Binding Account}">
+                    <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
