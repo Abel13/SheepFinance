@@ -27,9 +27,9 @@ namespace SheepFinance.Control
             Transfers = database.GetTransfers();
         }
 
-        public ObservableCollection<Account> GetAccountList()
+        public List<Account> GetAccountList()
         {
-            return database.GetAccounts();
+            return database.GetAccounts().OrderByDescending(a=>a.Amount).ToList();
         }
 
         public List<ItemChartMonthly> GetItensChartMonthly()

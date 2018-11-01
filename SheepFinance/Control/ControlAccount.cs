@@ -18,9 +18,9 @@ namespace SheepFinance.Control
             database = LocalDatabase.GetInstance();
         }
 
-        public ObservableCollection<Account> GetAccountList()
+        public List<Account> GetAccountList()
         {
-            return database.GetAccounts();
+            return database.GetAccounts().OrderByDescending(a => a.Amount).ToList();
         }
 
         internal void SaveAccount(string name, double initialAmount)

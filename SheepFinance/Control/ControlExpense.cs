@@ -29,7 +29,7 @@ namespace SheepFinance.Control
             var expenses = database.GetExpenses();
             return (from e in expenses
                     where e.Date.Year.Equals(ActualDate.Year) && e.Date.Month.Equals(ActualDate.Month)
-                    select e).ToList();
+                    select e).OrderByDescending(e=>e.Date).ToList();
         }
 
         public ObservableCollection<Account> GetAccountList() => database.GetAccounts();

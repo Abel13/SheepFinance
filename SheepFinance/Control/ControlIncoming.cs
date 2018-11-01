@@ -28,7 +28,7 @@ namespace SheepFinance.Control
             var incomings = database.GetIncomings();
             return (from i in incomings
                    where i.Date.Year.Equals(ActualDate.Year) && i.Date.Month.Equals(ActualDate.Month)
-                   select i).ToList();
+                   select i).OrderByDescending(i=>i.Date).ToList();
         }
 
         public ObservableCollection<Account> GetAccountList()

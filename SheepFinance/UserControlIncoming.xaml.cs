@@ -108,6 +108,8 @@ namespace SheepFinance
                 ListViewTransactions.ItemsSource = null;
             }
 
+            TextBlockTotal.Text = transactions.Sum(t => t.Value).ToString("c");
+
             TextBlockIncomingsEmpty.Visibility = transactions.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
