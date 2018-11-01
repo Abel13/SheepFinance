@@ -25,9 +25,9 @@ namespace SheepFinance.Control
         public List<TransferCash> GetTransferList()
         {
             var transferCashList = database.GetTransfers();
-            return (from i in transferCashList
-                    where i.Date.Year.Equals(ActualDate.Year) && i.Date.Month.Equals(ActualDate.Month)
-                    select i).ToList();
+            return (from t in transferCashList
+                    where t.Date.Year.Equals(ActualDate.Year) && t.Date.Month.Equals(ActualDate.Month)
+                    select t).OrderByDescending(t=>t.Date).ToList();
         }
 
         internal void NextMonth() => ActualDate = ActualDate.AddMonths(1);
