@@ -2,5 +2,13 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <PublishUrlHistory>C:\Users\abelo\OneDrive\SheepFinance Download\Instalador\</PublishUrlHistory>
+    <InstallUrlHistory>https://1drv.ms/f/s!Ai5Zwr2Nn8TTisBspsY1xHVODhcB6Q/</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
 </Project>
