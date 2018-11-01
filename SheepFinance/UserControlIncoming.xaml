@@ -11,6 +11,7 @@
         <StackPanel>
             <StackPanel Height="120" Background="#FF073E6A" VerticalAlignment="Top">
                 <TextBlock Text="Entradas" FontSize="24" FontWeight="Bold" Margin="20 20 0 0"/>
+                <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" FontSize="22" Margin="20 0"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
                     <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>

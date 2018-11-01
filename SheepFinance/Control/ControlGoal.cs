@@ -20,7 +20,7 @@ namespace SheepFinance.Control
             database = LocalDatabase.GetInstance();
         }
 
-        public List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).ToList();
+        public List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).OrderByDescending(g=>g.Balance).ToList();
 
         internal void SaveGoal(string name, double goalValue, DateTime deadline) => database.AddGoal(name, goalValue, deadline);
 
