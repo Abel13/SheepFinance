@@ -6,87 +6,88 @@
              xmlns:local="clr-namespace:SheepFinance"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="300" Foreground="White" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
+             d:DesignHeight="300" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
     <Grid>
-        <StackPanel>
-            <StackPanel Height="120" Background="#FF073E6A" VerticalAlignment="Top">
-                <TextBlock Text="Saídas" FontSize="24" FontWeight="Bold" Margin="20 20 0 0"/>
-                <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" FontSize="22" Margin="20 0"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
-                    <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
-                    <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center">
-                        <ComboBox.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" Margin="5 0"/>
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                            </GroupStyle>
-                        </ComboBox.GroupStyle>
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="400"
-                                    Text="{Binding Path=Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="ComboBoxGoals" Width="200" Margin="15" materialDesign:HintAssist.Hint="Meta (Opcional)" VerticalAlignment="Center" ItemsSource="{Binding Goal}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="400"
-                                    Text="{Binding Path=Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAdd_Click">
-                        <materialDesign:PackIcon Kind="Check"/>
-                    </Button>
-                </StackPanel>
-            </StackPanel>
-            <Grid Height="420">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
-                    <Button x:Name="ButtonPreviousMonth" Margin="5" Click="ButtonPreviousMonth_Click">
-                        <materialDesign:PackIcon Kind="ArrowLeft"/>
-                    </Button>
-                    <Grid Width="90">
-                        <TextBlock x:Name="TextBlockYear" Text="2018" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" FontSize="15"/>
-                        <TextBlock x:Name="TextBlockMonth" Text="Dezembro" FontSize="18" VerticalAlignment="Bottom" TextAlignment="Center" Margin="5"/>
-                    </Grid>
-                    <Button x:Name="ButtonNextMonth" Margin="5" Click="ButtonNextMonth_Click">
-                        <materialDesign:PackIcon Kind="ArrowRight"/>
-                    </Button>
-                </StackPanel>
-                <ListView x:Name="ListViewTransactions" Margin="0 50 0 0" FontSize="18">
-                    <ListView.ItemTemplate>
+        <StackPanel Height="120" Background="LightGray" VerticalAlignment="Top">
+            <TextBlock Text="Saídas" FontSize="24" FontWeight="Bold" Margin="20 20 0 0"/>
+            <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" FontSize="22" Margin="20 0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="TextBoxValue" Width="200" Margin="15" materialDesign:HintAssist.Hint="Valor" VerticalAlignment="Center" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus"/>
+                <DatePicker x:Name="DatePickerData" Width="150" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
+                <ComboBox x:Name="ComboBoxCategory" Width="200" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center">
+                    <ComboBox.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" Margin="5 0"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ComboBox.GroupStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="ComboBoxAccounts" Width="200" Margin="15" materialDesign:HintAssist.Hint="Conta" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="250" Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding Path=Category}" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock xml:lang="pt-BR" Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
-                                <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
-                                <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">
-                                    <materialDesign:PackIcon Kind="Delete"/>
-                                </Button>
+                                <TextBlock Width="400"
+                                    Text="{Binding Path=Name}"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <TextBlock x:Name="TextBlockExpensesEmpty" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="ComboBoxGoals" Width="200" Margin="15" materialDesign:HintAssist.Hint="Meta (Opcional)" VerticalAlignment="Center" ItemsSource="{Binding Goal}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="400"
+                                    Text="{Binding Path=Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAdd_Click">
+                    <materialDesign:PackIcon Kind="Check"/>
+                </Button>
+            </StackPanel>
         </StackPanel>
+        <Grid Margin="0 120 0 0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                <Button x:Name="ButtonPreviousMonth" Margin="5" Click="ButtonPreviousMonth_Click">
+                    <materialDesign:PackIcon Kind="ArrowLeft"/>
+                </Button>
+                <Grid Width="90">
+                    <TextBlock x:Name="TextBlockYear" Text="2018" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" FontSize="15"/>
+                    <TextBlock x:Name="TextBlockMonth" Text="Dezembro" FontSize="18" VerticalAlignment="Bottom" TextAlignment="Center" Margin="5"/>
+                </Grid>
+                <Button x:Name="ButtonNextMonth" Margin="5" Click="ButtonNextMonth_Click">
+                    <materialDesign:PackIcon Kind="ArrowRight"/>
+                </Button>
+            </StackPanel>
+            <ListView x:Name="ListViewTransactions" Margin="0,50,0,0" FontSize="18" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="250" Text="{Binding Path=Description}" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Width="150" Text="{Binding Path=Category}" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock xml:lang="pt-BR" Text="{Binding Path=Date, StringFormat={}{0:d}}" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10" VerticalAlignment="Center"/>
+                            <Button x:Name="ButtonEdit" Margin="25 0 5 0" Width="60" Click="ButtonEdit_Click">
+                                <materialDesign:PackIcon Kind="Pencil"/>
+                            </Button>
+                            <Button x:Name="ButtonDelete" Margin="5 0" Width="60" Click="ButtonDelete_Click">
+                                <materialDesign:PackIcon Kind="Delete"/>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBlock x:Name="TextBlockExpensesEmpty" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+        </Grid>
         <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                                 x:Name="SnackbarThree" Margin="15"/>
     </Grid>

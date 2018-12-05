@@ -169,6 +169,13 @@ namespace SheepFinance.Data
         {
             SaveGoals();
         }
+
+        public void UpdateTransaction()
+        {
+            SaveExpenses();
+            SaveIncomings();
+            SaveTransfers();
+        }
         #endregion
 
         #region LOAD

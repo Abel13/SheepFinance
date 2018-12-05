@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:SheepFinance"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="300" Foreground="White" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
+             d:DesignHeight="300" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
     <Grid>
-        <StackPanel>
-            <StackPanel Height="120" Background="#FF073E6A" VerticalAlignment="Top">
+        <Grid>
+            <StackPanel Height="120" Background="LightGray" VerticalAlignment="Top">
                 <TextBlock Text="Contas" FontSize="24" Margin="20 15 0 0"/>
                 <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" FontSize="22" Margin="20 0"/>
                 <StackPanel Orientation="Horizontal">
@@ -20,7 +20,7 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <ListView Height="420" x:Name="ListViewAccounts" ItemsSource="{Binding Account}" FontSize="18">
+            <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" FontSize="18" Margin="0 120 0 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -34,7 +34,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
+        </Grid>
         <TextBlock x:Name="TextBlockAccountsEmpty" Text="Não tem nada aqui ainda!" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                                 x:Name="SnackbarThree" Margin="15"/>

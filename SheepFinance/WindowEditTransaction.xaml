@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF073E6A" Width="300" Height="300" FontFamily="EngraversGothic BT" Foreground="White">
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" Width="300" Height="300" FontFamily="EngraversGothic BT">
     <StackPanel>
-        <Grid Background="White" VerticalAlignment="Top" Width="300">
-            <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="ButtonAdd_Click">
+        <Grid Margin="1" Background="White" VerticalAlignment="Top" Width="300">
+            <Button x:Name="ButtonSave" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="ButtonSave_Click">
                 <materialDesign:PackIcon Kind="Check"/>
             </Button>
             <TextBlock Text="{Binding Path=Kind}" Foreground="#FF073E6A" FontSize="22" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -18,10 +18,10 @@
             </Button>
         </Grid>
         <StackPanel>
-            <TextBlock Text="{Binding Path=Account.Name}" Margin="15" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Path=Value}" Margin="15" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center" FontSize="25" TextAlignment="Center"/>
-            <DatePicker x:Name="DatePickerData" Width="250" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15"/>
-            <ComboBox x:Name="ComboBoxCategory" Width="250" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" ItemsSource="{Binding Account.Name}">
+            <TextBlock Text="{Binding Path=Description}" Margin="0 15 0 0" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center" FontSize="25"/>
+            <TextBlock Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Left" Margin="15 5 15 15" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center" FontSize="35"/>
+            <DatePicker x:Name="DatePickerData" Width="250" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15" SelectedDate="{Binding Path=Date, Mode=OneWay}"/>
+            <ComboBox x:Name="ComboBoxCategory" Width="250" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" Text="{Binding Path=Category.Name}">
                 <ComboBox.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>

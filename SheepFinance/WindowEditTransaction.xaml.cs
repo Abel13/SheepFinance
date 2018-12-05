@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SheepFinance.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace SheepFinance
     /// </summary>
     public partial class WindowEditTransaction : Window
     {
+        ControlEditTransaction control;
         public WindowEditTransaction(object transaction)
         {
             InitializeComponent();
+            control = new ControlEditTransaction();
+            this.DataContext = transaction;
+            ComboBoxCategory.ItemsSource = control.GetCategoryList();
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -29,9 +34,17 @@ namespace SheepFinance
             this.Close();
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
+            if (DatePickerData.Text == string.Empty)
+            {
+                DatePickerData.Focus();
+                return;
+            }
+            DateTime date = DatePickerData.SelectedDate ?? DateTime.Now;
 
+            control.Salvar(date, DataContext);
+            this.Close();
         }
     }
 }

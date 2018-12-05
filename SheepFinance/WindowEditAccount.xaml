@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SheepFinance"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF073E6A" Width="300" Height="100" FontFamily="EngraversGothic BT" Foreground="White">
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" Width="300" Height="100" FontFamily="EngraversGothic BT">
     <StackPanel>
-        <Grid Background="White" VerticalAlignment="Top" Width="300">
+        <Grid Margin="1" Background="White" VerticalAlignment="Top" Width="300">
             <TextBlock Text="Editar Conta" Foreground="#FF073E6A" FontSize="22" Margin="10" VerticalAlignment="Center"/>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
                 <materialDesign:PackIcon Kind="Close"/>

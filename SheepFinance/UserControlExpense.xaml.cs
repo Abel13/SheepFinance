@@ -160,5 +160,13 @@ namespace SheepFinance
             control.Delete(((Button)sender).DataContext);
             LoadExpenses();
         }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            WindowEditTransaction transaction = new WindowEditTransaction(((Button)sender).DataContext);
+            transaction.ShowDialog();
+
+            LoadExpenses();
+        }
     }
 }
