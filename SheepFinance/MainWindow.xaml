@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="600" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseDown="Window_MouseDown" Foreground="LightGray" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Icon="Assets/logo-short.png">
-    <Grid Background="#FF0F0F0F">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="600" Width="1200" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Icon="Assets/32x32.png" WindowState="Maximized" MinHeight="550" MinWidth="1080">
+    <Grid Background="White">
         <Grid x:Name="GridMain" Margin="0 60 0 0"/>
-
+        <Image Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Source="Assets/64x64.png"/>
         <Grid Height="60" VerticalAlignment="Top">
 
-            <Button HorizontalAlignment="Right" Margin="10" x:Name="ButtonShutdown" VerticalAlignment="Center" Width="40" Height="40" Padding="0" Click="ButtonShutdown_Click">
+            <!--<Button HorizontalAlignment="Right" Margin="10" x:Name="ButtonShutdown" VerticalAlignment="Center" Width="40" Height="40" Padding="0" Click="ButtonShutdown_Click">
                 <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
-            </Button>
-            <TextBlock Text="Sheep Finance 4.0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+            </Button>-->
+            <Label Content="Sheep Finance 4.0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
             <Button x:Name="ButtonMenu" VerticalAlignment="Center" HorizontalAlignment="Left" Width="40" Height="40" Padding="0" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonMenu_Click">
                 <materialDesign:PackIcon Kind="Menu" Height="25" Width="25" Foreground="#FF2568B9"/>
             </Button>
         </Grid>
-        <StackPanel x:Name="StackMenu" Width="250" HorizontalAlignment="Left" Background="#FF2568B9">
+        <StackPanel x:Name="StackMenu" Width="250" HorizontalAlignment="Left" Background="#FF009CDE">
             <Grid Height="180">
                 <Grid.Background>
                     <ImageBrush ImageSource="Assets/finance.jpg"/>
@@ -29,7 +29,7 @@
                     <materialDesign:PackIcon Kind="CloseOutline" Width="25" Height="25" Foreground="#FF2568B9"/>
                 </Button>
             </Grid>
-            <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" ItemsSource="{Binding MenuItem}">
+            <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" ItemsSource="{Binding MenuItem}" Foreground="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

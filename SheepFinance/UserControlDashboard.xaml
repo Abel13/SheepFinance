@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:SheepFinance"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="600" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Foreground="LightGray">
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             d:DesignHeight="600" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Foreground="Gray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,73 +20,84 @@
             <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
-            <StackPanel>
-                <StackPanel Background="#FF343434" Margin="15" Height="80">
-                    <StackPanel.Effect>
+            <StackPanel Margin="15" Background="#FF009CDE" Height="80" VerticalAlignment="Top">
+                <!--<StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
-                    </StackPanel.Effect>
-                    <TextBlock Text="total" FontSize="18" Margin="10" HorizontalAlignment="Left"/>
-                    <TextBlock x:Name="TextBlockTotal" Text="R$ 0,00" Margin="10 0" FontSize="18" HorizontalAlignment="Left"/>
-                </StackPanel>
-                <StackPanel Background="#FF343434" Margin="15">
-                    <StackPanel.Effect>
-                        <DropShadowEffect BlurRadius="30" ShadowDepth="1"/>
-                    </StackPanel.Effect>
-                    <TextBlock Text="histórico" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
-                    <ListView x:Name="ListViewTimeLine" ItemsSource="{Binding ItemTimeLine}" Height="360">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="50" Text="{Binding Path=Date, StringFormat={}{0:dd-MMM}}" Margin="5" VerticalAlignment="Center" Foreground="Gray" FontSize="14" FontWeight="Bold"/>
-                                    <Grid Margin="10 0">
-                                        <Rectangle Fill="White" HorizontalAlignment="Center" Width="2" Margin="0 9.7 0 0"/>
-                                        <Grid VerticalAlignment="Top" >
-                                            <Ellipse Width="22" Height="22" Stroke="White"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="1"/>
-                                            <Ellipse Width="16" Height="16" Stroke="White"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="2"/>
-                                            <Ellipse Width="6" Height="6" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid MinWidth="180">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Path=Type}" Margin="5 10 10 0" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="18" TextAlignment="Left"/>
-                                            <TextBlock Text="{Binding Path=Description}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="14" TextAlignment="Left" Foreground="LightGray"/>
-                                            <TextBlock Text="{Binding Path=Value}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="15" TextAlignment="Left" Foreground="{Binding Path=Brush}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
+                    </StackPanel.Effect>-->
+                <Label Content="total" FontSize="18" Margin="10 5" HorizontalAlignment="Left" Foreground="White"/>
+                <Label x:Name="TextBlockTotal" Content="R$ 0,00" Margin="10 0" FontSize="22" HorizontalAlignment="Right" Foreground="White"/>
             </StackPanel>
+            <Grid Background="#FFE0E0E0" Margin="15 100 15 15">
+                <!--<StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="30" ShadowDepth="1"/>
+                    </StackPanel.Effect>-->
+                <TextBlock Text="histórico" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
+                <ListView x:Name="ListViewTimeLine" ItemsSource="{Binding ItemTimeLine}"  Margin="0 40 0 0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="50" Text="{Binding Path=Date, StringFormat={}{0:dd-MMM}}" Margin="5" VerticalAlignment="Center" Foreground="Gray" FontSize="14" FontWeight="Bold"/>
+                                <Grid Margin="10 0">
+                                    <Rectangle Fill="#FF009CDE" HorizontalAlignment="Center" Width="2" Margin="0 9.7 0 0"/>
+                                    <Grid VerticalAlignment="Top" >
+                                        <Ellipse Width="22" Height="22" Stroke="#FF009CDE"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="1"/>
+                                        <Ellipse Width="16" Height="16" Stroke="#FF009CDE"  VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="2"/>
+                                        <Ellipse Width="6" Height="6" Fill="#FF009CDE" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Grid>
+                                <Grid MinWidth="180">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Path=Type}" Margin="5 10 10 0" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="18" TextAlignment="Left"/>
+                                        <TextBlock Text="{Binding Path=Description}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="14" TextAlignment="Left" Foreground="#FF009CDE"/>
+                                        <TextBlock Text="{Binding Path=Value}" Margin="5" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" FontSize="18" FontWeight="Bold" TextAlignment="Left" Foreground="{Binding Path=Brush}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
 
-        <ScrollViewer Grid.Column="1" Grid.RowSpan="3" MinWidth="150">
-            <StackPanel Margin="30 15">
-                <StackPanel Background="#FF343434" Margin="0 0 0 15">
-                    <StackPanel.Effect>
+        <ScrollViewer Grid.Column="1" Grid.RowSpan="3" MinWidth="150" Margin="5 15" Background="#FFDEDEDE">
+            <StackPanel>
+                <StackPanel Background="#FFDEDEDE" Margin="15">
+                    <!--<StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
-                    </StackPanel.Effect>
+                    </StackPanel.Effect>-->
                     <TextBlock Text="CENTROS DE CUSTO" Margin="20 10" FontSize="18"/>
                     <TextBlock x:Name="TextBlockCategoryCostEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                         <StackPanel Orientation="Horizontal" x:Name="StackCategoryCost" VerticalAlignment="Top"/>
                     </ScrollViewer>
                 </StackPanel>
-                <StackPanel Background="#FF343434" Margin="0 0 0 15">
-                    <StackPanel.Effect>
+                <Rectangle Fill="White" Height="1" Margin="20 0 5 0"/>
+                <StackPanel Background="#FFDEDEDE" Margin="15">
+                    <!--<StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
-                    </StackPanel.Effect>
+                    </StackPanel.Effect>-->
+                    <TextBlock Text="RENDIMENTO MENSAL" Margin="20 10" FontSize="18"/>
+                    <TextBlock x:Name="TextBlockMonthlyIncomeEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" x:Name="StackMonthlyIncome" VerticalAlignment="Top"/>
+                    </ScrollViewer>
+                </StackPanel>
+                <Rectangle Fill="White" Height="1" Margin="20 0 5 0"/>
+                <StackPanel Background="#FFDEDEDE" Margin="15">
+                    <!--<StackPanel.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
+                    </StackPanel.Effect>-->
                     <TextBlock Text="GRÁFICO MENSAL" Margin="20 10" FontSize="18"/>
                     <TextBlock x:Name="TextBlockMonthlyChartsEmpty" Text="Não tem nada aqui ainda!" Margin="20" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                         <StackPanel Orientation="Horizontal" x:Name="StackMonthlyChart" VerticalAlignment="Top"/>
                     </ScrollViewer>
                 </StackPanel>
-                <StackPanel Background="#FF343434" Margin="0 15">
-                    <StackPanel.Effect>
+                <Rectangle Fill="White" Height="1" Margin="20 0 5 0"/>
+                <StackPanel Background="#FFDEDEDE" Margin="15">
+                    <!--<StackPanel.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
-                    </StackPanel.Effect>
+                    </StackPanel.Effect>-->
                     <StackPanel Height="200">
                         <TextBlock Text="COTAÇÃO DO DOLAR" Margin="20 10" FontSize="18"/>
                         <StackPanel>
@@ -113,12 +125,16 @@
         </ScrollViewer>
 
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
-            <StackPanel Margin="15" Background="#FF343434">
-                <StackPanel.Effect>
+            <Grid Margin="15" Background="#FFE0E0E0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="181*"/>
+                </Grid.RowDefinitions>
+                <!--<StackPanel.Effect>
                     <DropShadowEffect ShadowDepth="1" BlurRadius="30"/>
-                </StackPanel.Effect>
-                <TextBlock Text="contas" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
-                <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" Height="520">
+                </StackPanel.Effect>-->
+                <TextBlock Text="contas" FontSize="16" Margin="10" HorizontalAlignment="Left" Grid.Row="0"/>
+                <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <GroupBox Header="{Binding Path=Name}" Width="185">
@@ -129,7 +145,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
