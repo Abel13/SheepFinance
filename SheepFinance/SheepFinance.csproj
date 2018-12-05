@@ -70,7 +70,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
@@ -113,6 +113,7 @@
     <Compile Include="Control\ControlAccount.cs" />
     <Compile Include="Control\ControlAddCredit.cs" />
     <Compile Include="Control\ControlDashboard.cs" />
+    <Compile Include="Control\ControlEditTransaction.cs" />
     <Compile Include="Control\ControlExpense.cs" />
     <Compile Include="Control\ControlGoal.cs" />
     <Compile Include="Control\ControlIncoming.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Model\ItemDollar.cs" />
     <Compile Include="Model\ItemTimeLine.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\MonthlyIncome.cs" />
     <Compile Include="Model\TransferCash.cs" />
     <Compile Include="UserControlAccount.xaml.cs">
       <DependentUpon>UserControlAccount.xaml</DependentUpon>
@@ -156,6 +158,9 @@
     <Compile Include="UserControlItemChart.xaml.cs">
       <DependentUpon>UserControlItemChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlItemMonthlyIncome.xaml.cs">
+      <DependentUpon>UserControlItemMonthlyIncome.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlTransactionItem.xaml.cs">
       <DependentUpon>UserControlTransactionItem.xaml</DependentUpon>
     </Compile>
@@ -167,6 +172,9 @@
     </Compile>
     <Compile Include="WindowEditAccount.xaml.cs">
       <DependentUpon>WindowEditAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowEditTransaction.xaml.cs">
+      <DependentUpon>WindowEditTransaction.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -208,6 +216,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlItemMonthlyIncome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlTransactionItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowEditAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowEditTransaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,9 +279,6 @@
     <Resource Include="Assets\finance.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -279,6 +292,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo-short.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\128x128.png" />
+    <Resource Include="Assets\256x256.png" />
+    <Resource Include="Assets\64x64.png" />
+    <Resource Include="Assets\96x96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\22x22.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using SheepFinance.Data;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using SheepFinance.Data;
 using SheepFinance.Model;
 using System;
 using System.Collections.Generic;
@@ -75,6 +77,36 @@ namespace SheepFinance.Control
             }
 
             return itemCharts.OrderByDescending(i=>i.Date).ToList();
+        }
+
+        internal List<MonthlyIncome> GetMonthlyIncomes()
+        {
+            List<MonthlyIncome> itemsChart = new List<MonthlyIncome>();
+            
+            var groupedIncomings = (from i in Incomings
+                                    where i.Category != null && i.Category.Name.Equals("Rendimento")
+                                    group i by new { month = i.Date.Month, year = i.Date.Year } into d
+                                    select new
+                                    {
+                                        dt = string.Format("{0}/{1}", d.Key.month, d.Key.year),
+                                        count = d.Count()
+                                    }).OrderByDescending(g => g.dt);
+
+            foreach (var item in groupedIncomings)
+            {
+                var ic = itemsChart.Where(i => i.Date.Equals(DateTime.Parse("01/" + item.dt))).FirstOrDefault();
+                if (ic == null)
+                {
+                    ic = new MonthlyIncome(item.dt);
+                    itemsChart.Add(ic);
+                }
+                ic.SetIncoming(Incomings.Where(i => i.Date.Month.Equals(ic.Date.Month) && 
+                                                i.Date.Year.Equals(ic.Date.Year) && 
+                                                i.Category != null &&
+                                                i.Category.Name.Equals("Rendimento")).Sum(i => i.Value));
+            }
+
+            return itemsChart.OrderByDescending(i=>i.Date).ToList();
         }
 
         public List<ItemChartCategory> GetItensChartCategories()

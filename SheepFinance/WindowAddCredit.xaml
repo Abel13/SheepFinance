@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF073E6A" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" Foreground="White" Loaded="Window_Loaded" Height="150" Width="350" >
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" Loaded="Window_Loaded" Height="150" Width="350" >
     <StackPanel Width="350">
-        <Grid Background="White" VerticalAlignment="Top">
+        <Grid Margin="1" Background="White" VerticalAlignment="Top">
             <TextBlock Text="Adicionar Crédito" Foreground="#FF073E6A" FontSize="22" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Button x:Name="ButtonClose" Click="ButtonClose_Click" HorizontalAlignment="Left" Margin="10">
                 <materialDesign:PackIcon Kind="ArrowLeft"/>
@@ -18,7 +18,7 @@
             </Button>
         </Grid>
         <StackPanel>
-            <TextBlock x:Name="TextBlockGoal" Text="{Binding Path=Name}" Width="200" Margin="10 10 0 0" HorizontalAlignment="Left" FontSize="20"/>
+            <TextBlock x:Name="TextBlockGoal" Text="{Binding Path=Name}" Margin="10 10 0 0" HorizontalAlignment="Left" FontSize="20"/>
             <TextBox x:Name="TextBoxValue" Width="200" Margin="10 0" materialDesign:HintAssist.Hint="Valor" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus" HorizontalAlignment="Left"/>
         </StackPanel>
     </StackPanel>

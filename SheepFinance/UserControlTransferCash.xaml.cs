@@ -150,5 +150,13 @@ namespace SheepFinance
 
             LoadTransfers();
         }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            WindowEditTransaction transaction = new WindowEditTransaction(((Button)sender).DataContext);
+            transaction.ShowDialog();
+
+            LoadTransfers();
+        }
     }
 }
