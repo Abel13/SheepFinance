@@ -34,8 +34,25 @@ namespace SheepFinance
             LoadAccounts();
             LoadTransactions();
             LoadMonthlyStatistics();
+            LoadMonthlyIncomes();
             LoadCategoryCosts();
             LoadDollar();
+        }
+
+        private void LoadMonthlyIncomes()
+        {
+            var monthlyIncomes = control.GetMonthlyIncomes();
+            if (monthlyIncomes.Count > 0)
+            {
+                var max = monthlyIncomes.Max(i => i.Incomings);
+                foreach (var item in monthlyIncomes)
+                {
+                    StackMonthlyIncome.Children.Add(new UserControlItemMonthlyIncome(item, max));
+                }
+
+            }
+
+            TextBlockMonthlyIncomeEmpty.Visibility = monthlyIncomes.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void LoadCategoryCosts()
@@ -90,7 +107,7 @@ namespace SheepFinance
             if (accounts.Count > 0)
             {
                 ListViewAccounts.ItemsSource = accounts;
-                TextBlockTotal.Text = accounts.Sum(a => a.Amount).ToString("C");
+                TextBlockTotal.Content = accounts.Sum(a => a.Amount).ToString("C");
             }
         }
     }
