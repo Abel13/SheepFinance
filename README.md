@@ -1,7 +1,12 @@
 # SheepFinance
 Programa de gestão financeira pessoal
 
-**CLONE OR DOWNLOAD**
+**DOWNLOAD**
+Para baixar e usar:
+![DOWNLOAD](https://github.com/Abel13/SheepFinance/releases/download/4.1.0.0/SheepFinance.rar "Sheep Finance 4.1")
+
+
+**CLONE**
 * Abra o projeto pelo arquivo _SheepFinance.sln_
 * Clique com o botão direito na solução
 * Escolha a opção: **Gerenciar pacotes do NuGet para a solução**
