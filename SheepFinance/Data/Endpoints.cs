@@ -12,7 +12,6 @@ namespace SheepFinance.Data
 {
     public class Endpoints
     {
-
         private HttpResponseMessage GET(string url)
         {
             using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
@@ -49,4 +48,3 @@ namespace SheepFinance.Data
         }
     }
 }
-
