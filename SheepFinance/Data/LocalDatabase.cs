@@ -243,22 +243,22 @@ namespace SheepFinance.Data
 
             var verify = false;
 
-            if (Goals.Count(g => g.Name.Equals("ESSENCIAL") && g.IsCategory) == 0)
+            if (Goals.Count(g => g.Name.Equals("Essencial") && g.IsCategory) == 0)
             {
                 Goals.Add(new Goal("Essencial"));
                 verify = true;
             }
-            if (Goals.Count(g => g.Name.Equals("EDUCAÇÃO") && g.IsCategory) == 0)
+            if (Goals.Count(g => g.Name.Equals("Educação") && g.IsCategory) == 0)
             {
                 Goals.Add(new Goal("Educação"));
                 verify = true;
             }
-            if (Goals.Count(g => g.Name.Equals("INVESTIMENTO") && g.IsCategory) == 0)
+            if (Goals.Count(g => g.Name.Equals("Investimento") && g.IsCategory) == 0)
             {
                 Goals.Add(new Goal("Investimento"));
                 verify = true;
             }
-            if (Goals.Count(g => g.Name.Equals("FODA-SE") && g.IsCategory) == 0)
+            if (Goals.Count(g => g.Name.Equals("Foda-se") && g.IsCategory) == 0)
             {
                 Goals.Add(new Goal("Foda-se"));
                 verify = true;
