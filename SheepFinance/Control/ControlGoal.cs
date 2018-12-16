@@ -21,6 +21,7 @@ namespace SheepFinance.Control
         }
 
         public List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).OrderByDescending(g=>g.Balance).ToList();
+        public List<Goal> GetCategoryList() => database.GetGoals().Where(g => g.IsCategory).ToList();
 
         internal void SaveGoal(string name, double goalValue, DateTime deadline) => database.AddGoal(name, goalValue, deadline);
 
@@ -34,8 +35,31 @@ namespace SheepFinance.Control
 
         internal void GoalDone(object goal)
         {
-            ((Goal)goal).SetDone();
-            database.UpdateGoal();
+            if (!((Goal)goal).IsCategory)
+            {
+                ((Goal)goal).SetDone();
+                database.UpdateGoal();
+            }
+        }
+
+        internal GoalCategory GetCategories()
+        {
+            var essential = GetCategoryList().Where(g => g.Name.Equals("Essencial")).Select(g => g).FirstOrDefault();
+            var education = GetCategoryList().Where(g => g.Name.Equals("Educação")).Select(g => g).FirstOrDefault();
+            var investiment = GetCategoryList().Where(g => g.Name.Equals("Investimento")).Select(g => g).FirstOrDefault();
+            var other = GetCategoryList().Where(g => g.Name.Equals("Foda-se")).Select(g => g).FirstOrDefault();
+
+            return new GoalCategory(essential, education, investiment, other);
+        }
+
+        internal void Categorize()
+        {
+            if (Box.AmountAvailable > 0)
+            {
+                var category = GetCategories();
+                category.SetValues(Box.AmountAvailable);
+                database.UpdateGoal();
+            }
         }
     }
 }

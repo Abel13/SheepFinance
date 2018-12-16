@@ -1,6 +1,7 @@
 ﻿using SheepFinance.Data;
 using SheepFinance.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,14 @@ namespace SheepFinance.Control
         internal void AddCredit(double value)
         {
             Goal.Credit(value);
+            database.UpdateGoal();
+        }
+        internal List<Goal> GetGoalCategories() => database.GetGoals().Where(g => g.IsCategory).ToList();
+
+        internal void DebitGoal(object goal, double value)
+        {
+            var Goal = (Goal)goal;
+            Goal.Debit(value);
             database.UpdateGoal();
         }
     }

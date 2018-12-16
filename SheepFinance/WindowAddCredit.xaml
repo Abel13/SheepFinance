@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" Loaded="Window_Loaded" Height="150" Width="350" >
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" Loaded="Window_Loaded" Height="240" Width="350" >
     <StackPanel Width="350">
         <Grid Margin="1" Background="White" VerticalAlignment="Top">
             <TextBlock Text="Adicionar Crédito" Foreground="#FF073E6A" FontSize="22" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -18,8 +18,18 @@
             </Button>
         </Grid>
         <StackPanel>
-            <TextBlock x:Name="TextBlockGoal" Text="{Binding Path=Name}" Margin="10 10 0 0" HorizontalAlignment="Left" FontSize="20"/>
-            <TextBox x:Name="TextBoxValue" Width="200" Margin="10 0" materialDesign:HintAssist.Hint="Valor" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="TextBlockGoal" Text="{Binding Path=Name}" Margin="15" HorizontalAlignment="Left" FontSize="20"/>
+            <ComboBox x:Name="ComboBoxGoals" Margin="15" materialDesign:HintAssist.Hint="Categoria (Opcional)" VerticalAlignment="Center" ItemsSource="{Binding Goal}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="400"
+                                    Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox x:Name="TextBoxValue" Margin="15" materialDesign:HintAssist.Hint="Valor" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus" HorizontalAlignment="Stretch"/>
         </StackPanel>
     </StackPanel>
 </Window>

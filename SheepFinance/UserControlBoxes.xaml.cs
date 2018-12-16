@@ -99,6 +99,7 @@ namespace SheepFinance
         {
             var goals = control.GetGoalList();
             ListViewGoals.ItemsSource = null;
+            GridCategory.DataContext = control.GetCategories();
             if (goals.Count > 0)
             {
                 ListViewGoals.ItemsSource = goals;
@@ -123,6 +124,13 @@ namespace SheepFinance
         {
             control.GoalDone(((Button)sender).DataContext);
 
+            LoadGoals();
+            LoadBox();
+        }
+
+        private void ButtonCategorize_Click(object sender, RoutedEventArgs e)
+        {
+            control.Categorize();
             LoadGoals();
             LoadBox();
         }

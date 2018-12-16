@@ -32,6 +32,7 @@ namespace SheepFinance
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlockGoal.DataContext = control.GetGoal();
+            ComboBoxGoals.ItemsSource = control.GetGoalCategories();
         }
 
         private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)
@@ -61,7 +62,10 @@ namespace SheepFinance
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             Double value = Double.Parse(TextBoxValue.Text, NumberStyles.Currency);
+            var goal = ComboBoxGoals.SelectedItem;
 
+            if (goal != null)
+                control.DebitGoal(goal, value);
             control.AddCredit(value);
             this.Close();
         }

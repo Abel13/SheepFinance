@@ -240,6 +240,32 @@ namespace SheepFinance.Data
                 sr.Dispose();
                 sr.Close();
             }
+
+            var verify = false;
+
+            if (Goals.Count(g => g.Name.Equals("ESSENCIAL") && g.IsCategory) == 0)
+            {
+                Goals.Add(new Goal("Essencial"));
+                verify = true;
+            }
+            if (Goals.Count(g => g.Name.Equals("EDUCAÇÃO") && g.IsCategory) == 0)
+            {
+                Goals.Add(new Goal("Educação"));
+                verify = true;
+            }
+            if (Goals.Count(g => g.Name.Equals("INVESTIMENTO") && g.IsCategory) == 0)
+            {
+                Goals.Add(new Goal("Investimento"));
+                verify = true;
+            }
+            if (Goals.Count(g => g.Name.Equals("FODA-SE") && g.IsCategory) == 0)
+            {
+                Goals.Add(new Goal("Foda-se"));
+                verify = true;
+            }
+
+            if (verify)
+                SaveGoals();
         }
         private static void LoadExpenses()
         {
@@ -461,7 +487,7 @@ namespace SheepFinance.Data
             sr.Flush();
             sr.Close();
         }
-        private void SaveGoals()
+        private static void SaveGoals()
         {
             var df = JsonConvert.SerializeObject(Goals);
 

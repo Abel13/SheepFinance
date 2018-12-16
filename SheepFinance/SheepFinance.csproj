@@ -131,6 +131,7 @@
     <Compile Include="Model\CategoryGroup.cs" />
     <Compile Include="Model\Dollar.cs" />
     <Compile Include="Model\Goal.cs" />
+    <Compile Include="Model\GoalCategory.cs" />
     <Compile Include="Model\ItemCategory.cs" />
     <Compile Include="Model\ItemChartCategory.cs" />
     <Compile Include="Model\ItemChartMonthly.cs" />

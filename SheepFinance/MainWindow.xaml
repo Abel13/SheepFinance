@@ -14,7 +14,7 @@
             <!--<Button HorizontalAlignment="Right" Margin="10" x:Name="ButtonShutdown" VerticalAlignment="Center" Width="40" Height="40" Padding="0" Click="ButtonShutdown_Click">
                 <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
             </Button>-->
-            <Label Content="Sheep Finance 4.0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+            <Label Content="Sheep Finance 4.1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
             <Button x:Name="ButtonMenu" VerticalAlignment="Center" HorizontalAlignment="Left" Width="40" Height="40" Padding="0" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonMenu_Click">
                 <materialDesign:PackIcon Kind="Menu" Height="25" Width="25" Foreground="#FF2568B9"/>
             </Button>
