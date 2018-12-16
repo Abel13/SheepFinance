@@ -8,9 +8,9 @@ using System.Windows;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("SheepFinance")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Software de gestão finanecira pessoal")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Info Sheep")]
 [assembly: AssemblyProduct("SheepFinance")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
@@ -51,7 +51,7 @@ using System.Windows;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // utilizando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("4.1.0.0")]
-[assembly: AssemblyFileVersion("4.1.0.0")]
+[assembly: AssemblyVersion("4.1.0.1")]
+[assembly: AssemblyFileVersion("4.1.0.1")]
 [assembly: NeutralResourcesLanguage("pt-BR")]
 
