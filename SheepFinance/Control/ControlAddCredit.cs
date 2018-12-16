@@ -28,7 +28,7 @@ namespace SheepFinance.Control
             Goal.Credit(value);
             database.UpdateGoal();
         }
-        internal List<Goal> GetGoalCategories() => database.GetGoals().Where(g => g.IsCategory).ToList();
+        internal List<Goal> GetGoalCategories() => database.GetGoals().Where(g => g.IsCategory == true).ToList();
 
         internal void DebitGoal(object goal, double value)
         {
