@@ -66,7 +66,7 @@ namespace SheepFinance
             TextBlockExpensesEmpty.Visibility = transactions.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddExpense_Click(object sender, RoutedEventArgs e)
         {
             var messageQueue = SnackbarThree.MessageQueue;
             if (TextBoxValue.Text == string.Empty)

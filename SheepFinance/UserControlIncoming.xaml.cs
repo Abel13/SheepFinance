@@ -51,7 +51,7 @@ namespace SheepFinance
             TextBoxValue.Text = string.Empty;
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddIncoming_Click(object sender, RoutedEventArgs e)
         {
             var messageQueue = SnackbarThree.MessageQueue;
             if (TextBoxValue.Text == string.Empty)
