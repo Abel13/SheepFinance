@@ -49,14 +49,14 @@ namespace SheepFinance
             if (TextBoxValue.Text == string.Empty)
             {
                 TextBoxValue.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor da transferência"));
                 return;
             }
 
             if (DatePickerData.Text == string.Empty)
             {
                 DatePickerData.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data da transferência"));
                 return;
             }
 

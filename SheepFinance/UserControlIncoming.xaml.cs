@@ -51,34 +51,34 @@ namespace SheepFinance
             TextBoxValue.Text = string.Empty;
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddIncoming_Click(object sender, RoutedEventArgs e)
         {
             var messageQueue = SnackbarThree.MessageQueue;
             if (TextBoxValue.Text == string.Empty)
             {
                 TextBoxValue.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor da entrada"));
                 return;
             }
 
             if (DatePickerData.Text == string.Empty)
             {
                 DatePickerData.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data da entrada"));
                 return;
             }
 
             if (ComboBoxCategory.Text == string.Empty)
             {
                 ComboBoxCategory.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a categoria"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a categoria da entrada"));
                 return;
             }
 
             if (ComboBoxAccounts.Text == string.Empty)
             {
                 ComboBoxAccounts.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a conta"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a conta da entrada"));
                 return;
             }
 

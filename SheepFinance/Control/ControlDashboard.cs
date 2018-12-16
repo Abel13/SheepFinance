@@ -19,7 +19,6 @@ namespace SheepFinance.Control
         private ObservableCollection<Expense> Expenses { get; set; }
         private ObservableCollection<TransferCash> Transfers { get; set; }
 
-
         public ControlDashboard()
         {
             database = LocalDatabase.GetInstance();

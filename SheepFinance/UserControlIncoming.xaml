@@ -40,7 +40,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Button x:Name="ButtonAdd" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAdd_Click">
+                    <Button x:Name="ButtonAddIncoming" HorizontalAlignment="Right" VerticalAlignment="Center" Click="ButtonAddIncoming_Click">
                         <materialDesign:PackIcon Kind="Check"/>
                     </Button>
                 </StackPanel>
