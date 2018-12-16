@@ -49,7 +49,6 @@ namespace SheepFinance.Control
                        where a.Name.Equals(((Account)accountIn).Name)
                        select a).FirstOrDefault();
 
-
             database.AddTransferCash(value, date, accOut, accIn);
         }
 
