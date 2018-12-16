@@ -49,7 +49,6 @@ namespace SheepFinance
                 {
                     StackMonthlyIncome.Children.Add(new UserControlItemMonthlyIncome(item, max));
                 }
-
             }
 
             TextBlockMonthlyIncomeEmpty.Visibility = monthlyIncomes.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
@@ -94,8 +93,7 @@ namespace SheepFinance
                 foreach (var item in monthlyStatistics)
                 {
                     StackMonthlyChart.Children.Add(new UserControlItemChart(item, max));
-                }
-                
+                }   
             }
 
             TextBlockMonthlyChartsEmpty.Visibility = monthlyStatistics.Count>0 ? Visibility.Collapsed : Visibility.Visible;
