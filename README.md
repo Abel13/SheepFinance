@@ -2,10 +2,7 @@
 Programa de gestão financeira pessoal
 
 **DOWNLOAD**
-
-Para baixar e usar:
-
-https://github.com/Abel13/SheepFinance/releases/download/4.1.0.0/SheepFinance.rar
+http://abel13.github.io/SheepFinance
 
 
 **CLONE**
