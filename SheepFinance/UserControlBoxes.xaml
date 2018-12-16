@@ -56,7 +56,7 @@
                             <TextBlock Text="55%" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="ESSENCIAL" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
+                            <TextBlock Text="{Binding Path=Essential.Name}" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
                             <TextBlock xml:lang="pt-BR" Text="{Binding Path=Essential.Balance, StringFormat={}{0:C}}" Foreground="White" HorizontalAlignment="Center" FontSize="25" Margin="10"/>
                         </StackPanel>
                     </Grid>
@@ -75,7 +75,7 @@
                             <TextBlock Text="5%" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="EDUCAÇÃO" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
+                            <TextBlock Text="{Binding Path=Education.Name}" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
                             <TextBlock xml:lang="pt-BR" Text="{Binding Path=Education.Balance, StringFormat={}{0:C}}" Foreground="White" HorizontalAlignment="Center" FontSize="25" Margin="10"/>
                         </StackPanel>
                     </Grid>
@@ -97,7 +97,7 @@
                             <TextBlock Text="30%" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="INVESTIMENTOS" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
+                            <TextBlock Text="{Binding Path=Investiment.Name}" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
                             <TextBlock xml:lang="pt-BR" Text="{Binding Path=Investiment.Balance, StringFormat={}{0:C}}" Foreground="White" HorizontalAlignment="Center" FontSize="25" Margin="10"/>
                         </StackPanel>
                     </Grid>
@@ -116,7 +116,7 @@
                             <TextBlock Text="10%" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="Foda-se" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
+                            <TextBlock Text="{Binding Path=Other.Name}" Foreground="White" HorizontalAlignment="Center" FontSize="15" Margin="20 0"/>
                             <TextBlock xml:lang="pt-BR" Text="{Binding Path=Other.Balance, StringFormat={}{0:C}}" Foreground="White" HorizontalAlignment="Center" FontSize="25" Margin="10"/>
                         </StackPanel>
                     </Grid>
