@@ -72,28 +72,28 @@ namespace SheepFinance
             if (TextBoxValue.Text == string.Empty)
             {
                 TextBoxValue.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe o valor da saída"));
                 return;
             }
 
             if (DatePickerData.Text == string.Empty)
             {
                 DatePickerData.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a data saída"));
                 return;
             }
 
             if (ComboBoxCategory.Text == string.Empty)
             {
                 ComboBoxCategory.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a categoria"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a categoria da saída"));
                 return;
             }
 
             if (ComboBoxAccounts.Text == string.Empty)
             {
                 ComboBoxAccounts.Focus();
-                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a conta"));
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe a conta da saída"));
                 return;
             }
 
