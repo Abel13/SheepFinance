@@ -31,7 +31,6 @@ namespace SheepFinance.Control
         internal void Delete(object account)
         {
             database.DeleteAccount((Account)account);
-
         }
     }
 }
