@@ -1,9 +1,6 @@
 # SheepFinance
 Programa de gestão financeira pessoal
 
-**DOWNLOAD**
-http://abel13.github.io/SheepFinance
-
 
 **CLONE**
 * Abra o projeto pelo arquivo _SheepFinance.sln_
