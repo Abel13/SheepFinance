@@ -40,5 +40,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+        <Label Content="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="8" Opacity="0.8" Margin="10 0"/>
+
     </Grid>
 </Window>

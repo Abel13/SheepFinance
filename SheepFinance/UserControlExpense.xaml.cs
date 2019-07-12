@@ -61,6 +61,17 @@ namespace SheepFinance
                 ListViewTransactions.ItemsSource = null;
             }
 
+            var group = transactions
+                .GroupBy(e => e.Category!=null ? e.Category.Name : null)
+                .Select(t => new
+                {
+                    Category = t.First().Category!=null ? t.First().Category.Name : "SEM CATEGORIA",
+                    Total = t.Sum(e=>e.Value).ToString("c")
+                }).ToList();
+            
+            
+            ListViewTotalByGroup.ItemsSource = group;
+
             TextBlockTotal.Text = transactions.Sum(t => t.Value).ToString("c");
 
             TextBlockExpensesEmpty.Visibility = transactions.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
