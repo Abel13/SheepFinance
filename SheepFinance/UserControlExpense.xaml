@@ -88,6 +88,24 @@
             </ListView>
             <TextBlock x:Name="TextBlockExpensesEmpty" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
         </Grid>
+        <Border Margin="0 130 15 0" MaxHeight="300" Background="White" Opacity="0.9" HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="12" BorderThickness="1" BorderBrush="{StaticResource PrimaryHueMidBrush}">
+            <ListView x:Name="ListViewTotalByGroup" FontSize="18" Grid.Row="1" Margin="15">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Width="150" FontWeight="Bold" TextTrimming="CharacterEllipsis" Text="{Binding Category}" Margin="5 0" Grid.Column="0" HorizontalAlignment="Left">
+                                <Run>:</Run>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Total}" Grid.Column="1" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
         <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                                 x:Name="SnackbarThree" Margin="15"/>
     </Grid>
