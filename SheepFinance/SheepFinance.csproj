@@ -32,7 +32,7 @@
     <PublisherName>InfoSheep</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>4.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -297,9 +297,6 @@
     <Resource Include="Assets\logo-short.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\32x32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +307,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
