@@ -32,7 +32,7 @@ namespace SheepFinance.Control
                     select e).OrderByDescending(e=>e.Date).ToList();
         }
 
-        public ObservableCollection<Account> GetAccountList() => database.GetAccounts();
+        public List<Account> GetAccountList() => database.GetAccounts().Where(a => a.Enabled).ToList();
 
         internal void SaveExpense(double value, DateTime date, object account, object category)
         {

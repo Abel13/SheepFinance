@@ -24,7 +24,7 @@ namespace SheepFinance.Control
             List<MenuItem> menu = new List<MenuItem>
             {
                 new MenuItem("DASHBOARD", MaterialDesignThemes.Wpf.PackIconKind.ViewDashboard),
-                new MenuItem("CONTAS", MaterialDesignThemes.Wpf.PackIconKind.AccountCardDetails),
+                new MenuItem("CONTAS", MaterialDesignThemes.Wpf.PackIconKind.Account),
                 new MenuItem("ENTRADAS", MaterialDesignThemes.Wpf.PackIconKind.PlusCircleOutline),
                 new MenuItem("SAÍDAS", MaterialDesignThemes.Wpf.PackIconKind.MinusCircleOutline),
                 new MenuItem("TRANSFERÊNCIAS", MaterialDesignThemes.Wpf.PackIconKind.SwapHorizontal),

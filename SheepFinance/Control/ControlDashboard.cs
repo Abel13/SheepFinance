@@ -30,7 +30,7 @@ namespace SheepFinance.Control
 
         public List<Account> GetAccountList()
         {
-            return database.GetAccounts().OrderByDescending(a=>a.Amount).ToList();
+            return database.GetAccounts().Where(a => a.Enabled).OrderByDescending(a=>a.Amount).ToList();
         }
 
         public List<ItemChartMonthly> GetItensChartMonthly()

@@ -170,6 +170,12 @@ namespace SheepFinance.Data
             SaveGoals();
         }
 
+
+        internal void UpdateAccount()
+        {
+            SaveAccounts();
+        }
+
         public void UpdateTransaction()
         {
             SaveExpenses();
