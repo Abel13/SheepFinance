@@ -1,5 +1,6 @@
 ﻿using SheepFinance.Data;
 using SheepFinance.Model;
+using SheepFinance.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,9 +19,17 @@ namespace SheepFinance.Control
             database = LocalDatabase.GetInstance();
         }
 
-        public List<Account> GetAccountList()
+        public List<AccountItemViewModel> GetAccountList()
         {
-            return database.GetAccounts().OrderByDescending(a => a.Amount).ToList();
+            List<AccountItemViewModel> accountsVM = new List<AccountItemViewModel>();
+            var accounts = database.GetAccounts().OrderByDescending(a => a.Amount).ToList();
+            foreach (var item in accounts)
+            {
+                var account = new AccountItemViewModel(item);
+                accountsVM.Add(account);
+            }
+
+            return accountsVM;
         }
 
         internal void SaveAccount(string name, double initialAmount)

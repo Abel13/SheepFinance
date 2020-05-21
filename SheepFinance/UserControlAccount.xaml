@@ -20,15 +20,18 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" FontSize="18" Margin="0 120 0 0">
+            <ListView x:Name="ListViewAccounts" ItemsSource="{Binding AccountItemViewModel}" FontSize="18" Margin="0 120 0 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Width="250"
-                                Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="10"/>
-                            <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Amount, StringFormat={}{0:C}}" TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+                                Text="{Binding Path=Account.Name}" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Account.Amount, StringFormat={}{0:C}}" TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
                             <Button x:Name="ButtonDelete" Margin="25 0" Width="60" Click="ButtonDelete_Click">
                                 <materialDesign:PackIcon Kind="Delete"/>
+                            </Button>
+                            <Button Width="60" Command="{Binding MyCommand}">
+                                <materialDesign:PackIcon Kind="{Binding DisableIcon}"/>
                             </Button>
                         </StackPanel>
                     </DataTemplate>

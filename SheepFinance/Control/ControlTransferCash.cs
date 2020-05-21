@@ -32,7 +32,7 @@ namespace SheepFinance.Control
 
         internal void NextMonth() => ActualDate = ActualDate.AddMonths(1);
 
-        internal ObservableCollection<Account> GetAccountList() => database.GetAccounts();
+        internal List<Account> GetAccountList() => database.GetAccounts().Where(a => a.Enabled).ToList();
 
         internal void PreviousMonth()
         {

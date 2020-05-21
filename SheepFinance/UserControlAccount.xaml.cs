@@ -40,6 +40,7 @@ namespace SheepFinance
         private void LoadAccounts()
         {
             var accounts = control.GetAccountList();
+
             if (accounts.Count > 0)
             {
                 ListViewAccounts.ItemsSource = accounts;
@@ -50,7 +51,7 @@ namespace SheepFinance
                 TextBlockAccountsEmpty.Visibility = Visibility.Visible;
             }
 
-            TextBlockTotal.Text = accounts.Sum(a => a.Amount).ToString("C");
+            TextBlockTotal.Text = accounts.Sum(a => a.Account.Amount).ToString("C");
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)

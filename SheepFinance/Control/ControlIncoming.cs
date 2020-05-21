@@ -31,9 +31,9 @@ namespace SheepFinance.Control
                    select i).OrderByDescending(i=>i.Date).ToList();
         }
 
-        public ObservableCollection<Account> GetAccountList()
+        public List<Account> GetAccountList()
         {
-            return database.GetAccounts();
+            return database.GetAccounts().Where(a => a.Enabled).ToList();
         }
 
         internal void SaveIncoming(double value, DateTime date, object account, object category)
