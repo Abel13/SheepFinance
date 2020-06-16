@@ -9,3 +9,9 @@ Programa de gestão financeira pessoal
 * Aparecerá a mensagem: **"Alguns pacotes do NuGet não está presente nesta solução. Clique para restaurar usando as origens do pacote online"**
 * Clique em [Restaurar]
 * Tudo pronto, pode iniciar o projeto!
+
+**VERSION**
+4 (Projeto)
+1 (Nova Feature)
+0 (Bug Fix)
+5 (Alteração)
