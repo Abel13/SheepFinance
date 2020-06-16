@@ -10,8 +10,8 @@ Programa de gestão financeira pessoal
 * Clique em [Restaurar]
 * Tudo pronto, pode iniciar o projeto!
 
-**VERSION**
-4 (Projeto)
-1 (Nova Feature)
-0 (Bug Fix)
-5 (Alteração)
+**VERSÃO**
+* _4_ (Projeto)
+* _1_ (Nova Feature)
+* _0_ (Bug Fix)
+* _5_ (Alteração)
