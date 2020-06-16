@@ -1,11 +1,1 @@
-version: 2.1
-
-jobs:
-  build:
-    docker:
-      - image: <docker-image-name-tag>
-
-workflows:
-  your-workflow:
-    jobs:
-      - build
+version: 2
