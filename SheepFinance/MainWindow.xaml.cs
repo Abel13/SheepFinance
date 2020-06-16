@@ -67,17 +67,6 @@ namespace SheepFinance
             }
 
             ListViewMenu.SelectedIndex = -1;
-            StackMenu.Visibility = Visibility.Collapsed;
-        }
-
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            StackMenu.Visibility = Visibility.Collapsed;
-        }
-
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
-        {
-            StackMenu.Visibility = Visibility.Visible;
         }
 
         private void ButtonShutdown_Click(object sender, RoutedEventArgs e)

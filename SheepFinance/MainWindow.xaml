@@ -6,6 +6,39 @@
         xmlns:local="clr-namespace:SheepFinance"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="600" Width="1200" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" FontFamily="/SheepFinance;component/Fonts/#Champagne &amp; Limousines" Icon="Assets/32x32.png" WindowState="Maximized" MinHeight="550" MinWidth="1080">
+    <Window.Resources>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn" Amplitude="-3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn" Amplitude="-3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenu">
+            <BeginStoryboard x:Name="OpenMenu_BeginStoryboard" Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonClose">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Selector.SelectionChanged" SourceName="ListViewMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid Background="White">
         <Grid x:Name="GridMain" Margin="0 60 0 0"/>
         <Image Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Source="Assets/64x64.png"/>
@@ -15,26 +48,34 @@
                 <materialDesign:PackIcon Kind="Power" Height="25" Width="25"/>
             </Button>-->
             <Label Content="Sheep Finance 4.1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <Button x:Name="ButtonMenu" VerticalAlignment="Center" HorizontalAlignment="Left" Width="40" Height="40" Padding="0" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonMenu_Click">
-                <materialDesign:PackIcon Kind="Menu" Height="25" Width="25" Foreground="#FF2568B9"/>
+            <Button x:Name="ButtonMenu" Background="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="40" Height="40" Padding="0" Margin="10" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Menu" Height="25" Width="25" Foreground="#FF009CDE" BorderBrush="#FF009CDE"/>
             </Button>
         </Grid>
-        <StackPanel x:Name="StackMenu" Width="250" HorizontalAlignment="Left" Background="#FF009CDE">
+        <StackPanel x:Name="StackMenu" Width="250" HorizontalAlignment="Left" Background="#FF009CDE" RenderTransformOrigin="0.5,0.5" Margin="-250, 0, 0, 0">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
             <Grid Height="180">
                 <Grid.Background>
                     <ImageBrush ImageSource="Assets/finance.jpg"/>
                 </Grid.Background>
                 <Grid Background="#CDDBD9EE"/>
-                <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Click="ButtonClose_Click" Margin="10">
-                    <materialDesign:PackIcon Kind="CloseOutline" Width="25" Height="25" Foreground="#FF2568B9"/>
+                <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="10">
+                    <materialDesign:PackIcon x:Name="packIcon" Kind="CloseOutline" Width="25" Height="25" Foreground="#FF009CDE"/>
                 </Button>
             </Grid>
             <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT" ItemsSource="{Binding MenuItem}" Foreground="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="25" Height="25" Margin="10"/>
-                            <TextBlock Text="{Binding Path=Title}" FontSize="18" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="{Binding Icon}" Width="25" Height="25" Margin="10"/>
+                            <TextBlock Text="{Binding Title}" FontSize="18" VerticalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
