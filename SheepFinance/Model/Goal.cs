@@ -56,5 +56,10 @@ namespace SheepFinance.Model
             Balance = 0;
             Done = true;
         }
+
+        internal void Clean()
+        {
+            Balance = 0;
+        }
     }
 }

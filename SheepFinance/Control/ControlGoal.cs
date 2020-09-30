@@ -61,5 +61,12 @@ namespace SheepFinance.Control
                 database.UpdateGoal();
             }
         }
+
+        internal void Clean()
+        {
+            var category = GetCategories();
+            category.CleanValues();
+            database.UpdateGoal();
+        }
     }
 }

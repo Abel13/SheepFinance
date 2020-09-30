@@ -21,6 +21,14 @@ namespace SheepFinance.Model
             Other.Credit(amountAvailable * 0.1);
         }
 
+        public void CleanValues()
+        {
+            Essential.Clean();
+            Education.Clean();
+            Investiment.Clean();
+            Other.Clean();
+        }
+
         public GoalCategory(Goal essentials, Goal education, Goal investiment, Goal other)
         {
             Essential = essentials;
