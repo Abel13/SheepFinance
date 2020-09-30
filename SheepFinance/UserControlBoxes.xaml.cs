@@ -136,5 +136,12 @@ namespace SheepFinance
             LoadGoals();
             LoadBox();
         }
+
+        private void ButtonClean_Click(object sender, RoutedEventArgs e)
+        {
+            control.Clean();
+            LoadGoals();
+            LoadBox();
+        }
     }
 }

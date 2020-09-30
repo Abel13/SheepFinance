@@ -22,7 +22,10 @@
                         <TextBlock Text="Valor Disponível: " FontSize="18"/>
                         <TextBlock x:Name="TextBlockAmountAvailable" xml:lang="pt-BR" Text="{Binding Path=AmountAvailable, StringFormat={}{0:C}}"  FontSize="16"/>
                     </StackPanel>
-                    <Button x:Name="ButtonCategorize" Content="CATEGORIZAR" Margin="5" Click="ButtonCategorize_Click"/>
+                    <StackPanel>
+                        <Button x:Name="ButtonCategorize" Content="CATEGORIZAR" Margin="5" Click="ButtonCategorize_Click"/>
+                        <Button x:Name="ButtonClean" Content="ZERAR" Margin="5" Click="ButtonClean_Click" Style="{StaticResource MaterialDesignRaisedAccentButton}"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBoxName" Width="200" Margin="15" materialDesign:HintAssist.Hint="Nome" VerticalAlignment="Center"/>
