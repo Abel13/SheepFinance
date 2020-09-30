@@ -109,11 +109,13 @@ namespace SheepFinance
 
         private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)
         {
+            var messageQueue = SnackbarThree.MessageQueue;
             Double.TryParse(TextBoxValue.Text, out double result);
 
-            if (!(new Regex(@"\d+(,\d{1,2})?")).Match(result.ToString()).Success)
+            if (!(new Regex(@"\d+(,\d{1,2})?")).Match(result.ToString()).Success || result <= 0)
             {
                 TextBoxValue.Text = string.Empty;
+                Task.Factory.StartNew(() => messageQueue.Enqueue("Informe um valor valido!"));
             }
             else
             {
