@@ -21,7 +21,7 @@
             <TextBlock Text="{Binding Path=Description}" Margin="0 15 0 0" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center" FontSize="25"/>
             <TextBlock Text="{Binding Path=Value, StringFormat={}{0:C}}" TextAlignment="Left" Margin="15 5 15 15" Width="250" materialDesign:HintAssist.Hint="Nome" HorizontalAlignment="Center" FontSize="35"/>
             <DatePicker x:Name="DatePickerData" Width="250" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Center" Margin="15" SelectedDate="{Binding Path=Date, Mode=OneWay}"/>
-            <ComboBox x:Name="ComboBoxCategory" Width="250" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" Text="{Binding Path=Category.Name}">
+            <ComboBox x:Name="ComboBoxCategory" Width="250" Margin="15" materialDesign:HintAssist.Hint="Categoria" VerticalAlignment="Center" Text="{Binding Path=Category.Name}" SelectionChanged="ComboBoxCategory_SelectionChanged">
                 <ComboBox.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
