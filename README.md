@@ -14,4 +14,4 @@ Programa de gestão financeira pessoal
 * _4_ (Projeto)
 * _1_ (Nova Feature)
 * _0_ (Bug Fix)
-* _5_ (Alteração)
+* _5_ (Alteração Simples)
