@@ -27,8 +27,21 @@ namespace SheepFinance
 
             DataContext = item;
 
-            GridIncoming.Height = (item.Incomings * 200) / maximum;
-            GridExpense.Height = (item.Expenses * 200) / maximum;
+            var incomings = item.Incomings;
+            var expenses = item.Expenses;
+
+            if (incomings < 0)
+            {
+                incomings = 0;
+            }
+
+            if (expenses < 0)
+            {
+                expenses = 0;
+            }
+
+            GridIncoming.Height = (incomings * 200) / maximum;
+            GridExpense.Height = (expenses * 200) / maximum;
         }
     }
 }
