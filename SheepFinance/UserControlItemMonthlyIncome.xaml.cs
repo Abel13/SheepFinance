@@ -26,8 +26,14 @@ namespace SheepFinance
             InitializeComponent();
 
             DataContext = item;
+            var incomings = item.Incomings;
 
-            GridIncoming.Height = (item.Incomings * 130) / maximum;
+          if (incomings < 0)
+            {
+                incomings = 0;
+            }
+
+            GridIncoming.Height = (incomings * 130) / maximum;
         }
     }
 }
