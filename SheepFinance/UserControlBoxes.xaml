@@ -10,7 +10,7 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
+                <RowDefinition Height="180"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
@@ -126,32 +126,100 @@
                 </materialDesign:Card>
             </Grid>
             <Grid Grid.Row="2" VerticalAlignment="Stretch">
-                <ListView x:Name="ListViewGoals" FontSize="18">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel
+                      Orientation="Horizontal"
+                      Margin="4" Grid.Row="0">
+                    <RadioButton
+                        x:Name="RadioButtonOpen"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        Margin="4"
+                        IsChecked="True"
+                        Content="ABERTAS" Checked="RadioButtonOpen_Checked"/>
+                    <RadioButton
+                        x:Name="RadioButtonDone"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        Margin="4"
+                        IsChecked="False"
+                        Content="CONCLUÍDAS" Checked="RadioButtonDone_Checked"/>
+                </StackPanel>
+                <ListView x:Name="ListViewGoals" FontSize="18" Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Path=Name}" Width="200" Margin="10" VerticalAlignment="Center"/>
-                                    <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=Balance, StringFormat={}{0:C}}" TextAlignment="Right" Margin="20 0" VerticalAlignment="Center"/>
-                                    <TextBlock xml:lang="pt-BR" Width="150" Text="{Binding Path=GoalValue, StringFormat={}{0:C}}" TextAlignment="Right" Margin="20 0" VerticalAlignment="Center"/>
+
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" Width="200" Margin="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="1"  xml:lang="pt-BR" Width="150" Text="{Binding Path=Balance, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2"  xml:lang="pt-BR" Width="150" Text="{Binding Path=GoalValue, StringFormat={}{0:C}}" TextAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                                <StackPanel x:Name="StackButtonActions" Grid.Column="3"  Orientation="Horizontal" Loaded="StackButtonActions_Loaded">
+                                    <Button x:Name="ButtonAddCredit" Margin="10 0" Click="ButtonAddCredit_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="ADD CRÉDITO" VerticalAlignment="Center" Margin="5"/>
+                                            <materialDesign:PackIcon Kind="CreditCardPlus" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="ButtonFinishGoal" Margin="10 0" Click="ButtonFinishGoal_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="FINALIZAR META" VerticalAlignment="Center"/>
+                                            <materialDesign:PackIcon Kind="TrophyOutline" Margin="5" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+
                                 </StackPanel>
-                                <Button x:Name="ButtonAddCredit" Margin="10 0" Click="ButtonAddCredit_Click">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="ADD CRÉDITO" VerticalAlignment="Center" Margin="5"/>
-                                        <materialDesign:PackIcon Kind="CreditCardPlus" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                                <Button x:Name="ButtonFinishGoal" Margin="10 0" Click="ButtonFinishGoal_Click">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="FINALIZAR META" VerticalAlignment="Center"/>
-                                        <materialDesign:PackIcon Kind="TrophyOutline" Margin="5" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.Template>
+                        <ControlTemplate>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Margin="5, 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="10,0" />
+                                            <Setter Property="FontSize" Value="20" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="BorderThickness" Value="1" />
+
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Border Grid.Column="0" Width="300">
+                                        <TextBlock >Descrição</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1" Width="145">
+                                        <TextBlock >Saldo</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2">
+                                        <TextBlock >Meta</TextBlock>
+                                    </Border>
+                                </Grid>
+                                <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                            </Grid>
+                        </ControlTemplate>
+                    </ListView.Template>
                 </ListView>
-                <TextBlock x:Name="TextBlockGoalsEmpty" VerticalAlignment="Center" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" x:Name="TextBlockGoalsEmpty" VerticalAlignment="Center" Text="Não tem nada aqui ainda!" FontSize="24" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
         <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
