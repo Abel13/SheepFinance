@@ -49,8 +49,6 @@ namespace SheepFinance.Model
 
         public void Debit(double value) => Balance -= value;
 
-        public void AchievementComplete() => Done = true;
-
         internal void SetDone()
         {
             Balance = 0;
