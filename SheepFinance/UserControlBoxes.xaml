@@ -147,6 +147,11 @@
                         Content="CONCLUÍDAS" Checked="RadioButtonDone_Checked"/>
                 </StackPanel>
                 <ListView x:Name="ListViewGoals" FontSize="18" Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
 

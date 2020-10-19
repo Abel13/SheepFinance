@@ -21,6 +21,11 @@
                 </StackPanel>
             </StackPanel>
             <ListView x:Name="ListViewAccounts" ItemsSource="{Binding AccountItemViewModel}" FontSize="18" Margin="0 120 0 0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

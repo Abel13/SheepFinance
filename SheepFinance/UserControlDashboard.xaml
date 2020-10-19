@@ -33,6 +33,11 @@
                     </StackPanel.Effect>-->
                 <TextBlock Text="histórico" FontSize="16" Margin="10" HorizontalAlignment="Left"/>
                 <ListView x:Name="ListViewTimeLine" ItemsSource="{Binding ItemTimeLine}"  Margin="0 40 0 0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -135,6 +140,11 @@
                 </StackPanel.Effect>-->
                 <TextBlock Text="contas" FontSize="16" Margin="10" HorizontalAlignment="Left" Grid.Row="0"/>
                 <ListView x:Name="ListViewAccounts" ItemsSource="{Binding Account}" Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <GroupBox Header="{Binding Path=Name}" Width="185">
