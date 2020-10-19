@@ -11,12 +11,14 @@ namespace SheepFinance.Model
         public string Name { get; private set; }
         public double Amount { get; private set; }
         public bool Enabled { get; private set; }
+        public bool Selected { get; set; }
 
-        public Account(string name, double amount, bool enabled = true)
+        public Account(string name, double amount, bool enabled = true, bool selected = false)
         {
             Name = name;
             Amount = amount;
             Enabled = enabled;
+            Selected = selected;
         }
 
         internal void Debit(double value)
