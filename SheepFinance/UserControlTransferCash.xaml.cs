@@ -79,6 +79,13 @@ namespace SheepFinance
             var accountOut = ComboBoxOut.SelectedItem;
             var accountIn = ComboBoxIn.SelectedItem;
 
+            if (accountIn == accountOut)
+            {
+                ComboBoxIn.Focus();
+                Task.Factory.StartNew(() => messageQueue.Enqueue("A conta de saída deve ser diferente da conta de entrada!"));
+                return;
+            }
+
             control.SaveTransferCash(value, date, accountOut, accountIn);
             LoadTransfers();
 

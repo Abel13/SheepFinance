@@ -17,6 +17,11 @@ namespace SheepFinance.Model
         {
             Date = date;
         }
+
+        public void UpdateCategory(ItemCategory category)
+        {
+            Category = category;
+        }
         public abstract void Move(Double value);
     }
 }

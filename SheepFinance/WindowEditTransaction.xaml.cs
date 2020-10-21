@@ -1,4 +1,5 @@
 ﻿using SheepFinance.Control;
+using SheepFinance.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,16 @@ namespace SheepFinance
         {
             InitializeComponent();
             control = new ControlEditTransaction();
+
+            if(((Transaction)transaction).Category != null)
+            {
+                ComboBoxCategory.ItemsSource = control.GetCategoryList();
+            }
+            else
+            {
+                ComboBoxCategory.Visibility = Visibility.Collapsed;
+            }
             this.DataContext = transaction;
-            ComboBoxCategory.ItemsSource = control.GetCategoryList();
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -45,6 +54,17 @@ namespace SheepFinance
 
             control.Salvar(date, DataContext);
             this.Close();
+        }
+
+        private void ComboBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+
+                var cat = (ItemCategory)((ComboBox)sender).SelectedItem;
+                var data = (Transaction)DataContext;
+                data.UpdateCategory(cat);
+            }
         }
     }
 }

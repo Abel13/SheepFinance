@@ -25,7 +25,7 @@ namespace SheepFinance
     public partial class UserControlBoxes : UserControl
     {
         ControlGoal control;
-
+        bool goalListDone = false;
         public UserControlBoxes()
         {
             InitializeComponent();
@@ -81,9 +81,9 @@ namespace SheepFinance
             var messageQueue = SnackbarThree.MessageQueue;
             Double.TryParse(TextBoxValue.Text, out double result);
 
-            if (!(new Regex(@"\d+(,\d{1,2})?")).Match(result.ToString()).Success || result <=0)
+            if (!(new Regex(@"\d+(,\d{1,2})?")).Match(result.ToString()).Success || result <= 0)
             {
-                TextBoxValue.Text = string.Empty; 
+                TextBoxValue.Text = string.Empty;
                 Task.Factory.StartNew(() => messageQueue.Enqueue("Informe um valor valido!"));
             }
             else
@@ -99,7 +99,7 @@ namespace SheepFinance
 
         private void LoadGoals()
         {
-            var goals = control.GetGoalList();
+            var goals = control.GetGoalList(goalListDone);
             ListViewGoals.ItemsSource = null;
             GridCategory.DataContext = control.GetCategories();
             if (goals.Count > 0)
@@ -135,6 +135,36 @@ namespace SheepFinance
             control.Categorize();
             LoadGoals();
             LoadBox();
+        }
+
+        private void ButtonClean_Click(object sender, RoutedEventArgs e)
+        {
+            control.Clean();
+            LoadGoals();
+            LoadBox();
+        }
+
+        private void RadioButtonOpen_Checked(object sender, RoutedEventArgs e)
+        {
+            if (control != null)
+            {
+                goalListDone = false;
+                LoadGoals();
+            }
+        }
+
+        private void RadioButtonDone_Checked(object sender, RoutedEventArgs e)
+        {
+            if (control != null)
+            {
+                goalListDone = true;
+                LoadGoals();
+            }
+        }
+
+        private void StackButtonActions_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((StackPanel)sender).Visibility = RadioButtonOpen.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

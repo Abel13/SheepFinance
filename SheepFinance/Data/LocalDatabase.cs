@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SheepFinance.Exceptions;
 using SheepFinance.Model;
+using SheepFinance.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -87,8 +88,9 @@ namespace SheepFinance.Data
             SaveIncomings();
             SaveAccounts();
         }
-        internal void DeleteAccount(Account account)
+        internal void DeleteAccount(AccountItemViewModel accountItem)
         {
+            var account = accountItem.Account;
             var totalt = (from i in Transfers
                           where i.AccountIn.Name.Equals(account.Name) || i.AccountOut.Name.Equals(account.Name)
                           select i).Count();

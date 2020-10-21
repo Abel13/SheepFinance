@@ -20,7 +20,7 @@ namespace SheepFinance.Control
             database = LocalDatabase.GetInstance();
         }
 
-        public List<Goal> GetGoalList() => database.GetGoals().Where(g => !g.Done).OrderByDescending(g=>g.Balance).ToList();
+        public List<Goal> GetGoalList(bool done) => database.GetGoals().Where(g => g.Done == done && !g.IsCategory).OrderByDescending(g => g.Balance).ToList();
         public List<Goal> GetCategoryList() => database.GetGoals().Where(g => g.IsCategory).ToList();
 
         internal void SaveGoal(string name, double goalValue, DateTime deadline) => database.AddGoal(name, goalValue, deadline);
@@ -60,6 +60,13 @@ namespace SheepFinance.Control
                 category.SetValues(Box.AmountAvailable);
                 database.UpdateGoal();
             }
+        }
+
+        internal void Clean()
+        {
+            var category = GetCategories();
+            category.CleanValues();
+            database.UpdateGoal();
         }
     }
 }

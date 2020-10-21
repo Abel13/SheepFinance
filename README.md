@@ -12,6 +12,6 @@ Programa de gestão financeira pessoal
 
 **VERSÃO**
 * _4_ (Projeto)
-* _1_ (Nova Feature)
+* _2_ (Nova Feature)
 * _0_ (Bug Fix)
-* _5_ (Alteração)
+* _0_ (Alteração Simples)

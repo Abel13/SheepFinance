@@ -53,6 +53,11 @@
                 </Button>
             </StackPanel>
             <ListView x:Name="ListViewTransactions" FontSize="18" Margin="0 50 0 0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
