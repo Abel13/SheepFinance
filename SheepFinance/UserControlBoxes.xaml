@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="300" Loaded="UserControl_Loaded" FontFamily="/SheepFinance;component/Fonts/#EngraversGothic BT">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="180"/>
@@ -163,6 +163,11 @@
                         Content="CONCLUÍDAS" Checked="RadioButtonDone_Checked"/>
                 </StackPanel>
                 <ListView x:Name="ListViewGoals" FontSize="18" Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
 
@@ -197,7 +202,7 @@
                     </ListView.ItemTemplate>
                     <ListView.Template>
                         <ControlTemplate>
-                            <Grid >
+                            <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -230,7 +235,9 @@
                                         <TextBlock >Meta</TextBlock>
                                     </Border>
                                 </Grid>
-                                <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                                <ScrollViewer Grid.Row="1">
+                                    <ItemsPresenter />
+                                </ScrollViewer>
                             </Grid>
                         </ControlTemplate>
                     </ListView.Template>

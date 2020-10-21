@@ -30,21 +30,41 @@ namespace SheepFinance.Control
 
         public List<Account> GetAccountList()
         {
-            return database.GetAccounts().Where(a => a.Enabled).OrderByDescending(a=>a.Amount).ToList();
+            return database.GetAccounts().Where(a => a.Enabled).OrderByDescending(a => a.Amount).ToList();
         }
 
         public List<ItemChartMonthly> GetItensChartMonthly()
         {
+            var accounts = GetAccountList().Where(a=>a.Enabled.Equals(true));
             List<ItemChartMonthly> itemCharts = new List<ItemChartMonthly>();
 
-            var groupedIncomings = (from i in Incomings
+            List<Incoming> selectedIncomings = new List<Incoming>();
+            foreach (var item in Incomings)
+            {
+                var itemAccount = item.Account.Name;
+                var accountEnabled = accounts.Where(a => a.Name.Equals(itemAccount)).FirstOrDefault();
+                if (accountEnabled != null)
+                    selectedIncomings.Add(item);
+            }
+
+            var groupedIncomings = (from i in selectedIncomings
                                     group i by new { month = i.Date.Month, year = i.Date.Year } into d
-                                    select new {
+                                    select new 
+                                    {
                                         dt = string.Format("{0}/{1}", d.Key.month, d.Key.year),
                                         count = d.Count()
                                    }).OrderByDescending(g => g.dt);
 
-            var groupedExpenses = (from e in Expenses
+            List<Expense> selectedExpenses = new List<Expense>();
+            foreach (var item in Expenses)
+            {
+                var itemAccount = item.Account.Name;
+                var accountEnabled = accounts.Where(a => a.Name.Equals(itemAccount)).FirstOrDefault();
+                if (accountEnabled != null)
+                    selectedExpenses.Add(item);
+            }
+
+            var groupedExpenses = (from e in selectedExpenses
                                    group e by new { month = e.Date.Month, year = e.Date.Year } into d
                                    select new
                                    {
@@ -60,29 +80,39 @@ namespace SheepFinance.Control
                     ic = new ItemChartMonthly(item.dt);
                     itemCharts.Add(ic);
                 }
-                ic.SetIncoming(Incomings.Where(i=>i.Date.Month.Equals(ic.Date.Month) && i.Date.Year.Equals(ic.Date.Year)).Sum(i=>i.Value));
+                ic.SetIncoming(selectedIncomings.Where(i => i.Date.Month.Equals(ic.Date.Month) && i.Date.Year.Equals(ic.Date.Year)).Sum(i => i.Value));
             }
 
             foreach (var item in groupedExpenses)
             {
                 var ic = itemCharts.Where(i => i.Date.Equals(DateTime.Parse("01/" + item.dt))).FirstOrDefault();
 
-                if(ic==null)
+                if (ic == null)
                 {
                     ic = new ItemChartMonthly(item.dt);
                     itemCharts.Add(ic);
                 }
-                ic.SetExpense(Expenses.Where(e=>e.Date.Month.Equals(ic.Date.Month) && e.Date.Year.Equals(ic.Date.Year)).Sum(e=>e.Value));
+                ic.SetExpense(selectedExpenses.Where(e => e.Date.Month.Equals(ic.Date.Month) && e.Date.Year.Equals(ic.Date.Year)).Sum(e => e.Value));
             }
 
-            return itemCharts.OrderByDescending(i=>i.Date).ToList();
+            return itemCharts.OrderByDescending(i => i.Date).ToList();
         }
 
         internal List<MonthlyIncome> GetMonthlyIncomes()
         {
+            var accounts = GetAccountList().Where(a => a.Enabled.Equals(true));
             List<MonthlyIncome> itemsChart = new List<MonthlyIncome>();
             
-            var groupedIncomings = (from i in Incomings
+            List<Incoming> selectedIncomings = new List<Incoming>();
+            foreach (var item in Incomings)
+            {
+                var itemAccount = item.Account.Name;
+                var accountEnabled = accounts.Where(a => a.Name.Equals(itemAccount)).FirstOrDefault();
+                if (accountEnabled != null)
+                    selectedIncomings.Add(item);
+            }
+
+            var groupedIncomings = (from i in selectedIncomings
                                     where i.Category != null && i.Category.Name.Equals("Rendimento")
                                     group i by new { month = i.Date.Month, year = i.Date.Year } into d
                                     select new
@@ -99,26 +129,36 @@ namespace SheepFinance.Control
                     ic = new MonthlyIncome(item.dt);
                     itemsChart.Add(ic);
                 }
-                ic.SetIncoming(Incomings.Where(i => i.Date.Month.Equals(ic.Date.Month) && 
+                ic.SetIncoming(selectedIncomings.Where(i => i.Date.Month.Equals(ic.Date.Month) && 
                                                 i.Date.Year.Equals(ic.Date.Year) && 
                                                 i.Category != null &&
                                                 i.Category.Name.Equals("Rendimento")).Sum(i => i.Value));
             }
 
-            return itemsChart.OrderByDescending(i=>i.Date).ToList();
+            return itemsChart.OrderByDescending(i => i.Date).ToList();
         }
 
         public List<ItemChartCategory> GetItensChartCategories()
         {
+            var accounts = GetAccountList().Where(a => a.Enabled.Equals(true));
             List<ItemChartCategory> itemCharts = new List<ItemChartCategory>();
 
-            var groupedExpenses = (from e in Expenses
-                                    group e by new { month = e.Date.Month, year = e.Date.Year } into d
-                                    select new
-                                    {
-                                        dt = string.Format("{0}/{1}", d.Key.month, d.Key.year),
-                                        count = d.Count()
-                                    }).OrderByDescending(g => g.dt);
+            List<Expense> selectedExpenses = new List<Expense>();
+            foreach (var item in Expenses)
+            {
+                var itemAccount = item.Account.Name;
+                var accountEnabled = accounts.Where(a => a.Name.Equals(itemAccount)).FirstOrDefault();
+                if (accountEnabled != null)
+                    selectedExpenses.Add(item);
+            }
+
+            var groupedExpenses = (from e in selectedExpenses
+                                   group e by new { month = e.Date.Month, year = e.Date.Year } into d
+                                   select new
+                                   {
+                                       dt = string.Format("{0}/{1}", d.Key.month, d.Key.year),
+                                       count = d.Count()
+                                   }).OrderByDescending(g => g.dt);
             
             foreach (var item in groupedExpenses)
             {
@@ -129,13 +169,13 @@ namespace SheepFinance.Control
                     itemCharts.Add(ic);
                 }
 
-                List<string> groups = (from g in Expenses
+                List<string> groups = (from g in selectedExpenses
                                 where g.Category != null && g.Date.Month.Equals(ic.Date.Month) && g.Date.Year.Equals(ic.Date.Year)
                                 select g.Category.Group).Distinct().ToList();
 
                 foreach (var group in groups)
                 {
-                    var value = Expenses.Where(i => i.Category != null && i.Date.Month.Equals(ic.Date.Month) && i.Date.Year.Equals(ic.Date.Year) && i.Category.Group.Equals(group)).Sum(g => g.Value);
+                    var value = selectedExpenses.Where(i => i.Category != null && i.Date.Month.Equals(ic.Date.Month) && i.Date.Year.Equals(ic.Date.Year) && i.Category.Group.Equals(group)).Sum(g => g.Value);
                     ic.SetSeries(group, value);
                 }
             }
@@ -148,7 +188,7 @@ namespace SheepFinance.Control
             List<ItemDollar> items = new List<ItemDollar>();
             var days = database.GetDollares().OrderByDescending(d => d.DataHoraCotacao).Take(5).ToList();
             
-            foreach (var item in days.OrderBy(d=>d.DataHoraCotacao).ToList())
+            foreach (var item in days.OrderBy(d => d.DataHoraCotacao).ToList())
             {
                 items.Add(new ItemDollar(item.CotacaoCompra, item.DataHoraCotacao));
             }
@@ -175,7 +215,7 @@ namespace SheepFinance.Control
                 itl.Add(new ItemTimeLine("transfer", item.Description, item.Value.ToString("C"), item.Date));
             }
 
-            return itl.OrderByDescending(i=>i.Date).ToList();
+            return itl.OrderByDescending(i => i.Date).ToList();
         }
     }
 }

@@ -69,6 +69,11 @@
                 </Button>
             </StackPanel>
             <ListView x:Name="ListViewTransactions" Margin="0,50,0,0" FontSize="18" Grid.Row="1">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -90,6 +95,11 @@
         </Grid>
         <Border Margin="0 130 15 0" MaxHeight="300" Background="White" Opacity="0.9" HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="12" BorderThickness="1" BorderBrush="{StaticResource PrimaryHueMidBrush}">
             <ListView x:Name="ListViewTotalByGroup" FontSize="18" Grid.Row="1" Margin="15">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
