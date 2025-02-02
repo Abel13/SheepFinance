@@ -1,3 +1,9 @@
+# [DEPRECATED] Este repositório está descontinuado
+
+![Deprecated](https://img.shields.io/badge/status-deprecated-red)
+
+Este projeto não está mais sendo mantido. Nenhuma atualização ou suporte adicional será fornecido.
+
 # SheepFinance
 Programa de gestão financeira pessoal
 
